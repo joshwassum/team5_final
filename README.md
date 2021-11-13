@@ -23,7 +23,7 @@ What say you? Do you have what it takes to delve into the dungeon of V?
 * # TODO: Add your names and emails here
 
 Josh Wassum was21005@byui.edu
-vanessa buzzell 
-buz20001@byui.edu
+vanessa buzzell buz20001@byui.edu
 Brian Bawden brianbawden001@gmail.com
+Larry Copeland cop21004@byui.edu
 
