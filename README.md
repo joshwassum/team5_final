@@ -21,4 +21,8 @@ What say you? Do you have what it takes to delve into the dungeon of V?
 ## Authors
 ---
 * # TODO: Add your names and emails here
+
 Josh Wassum was21005@byui.edu
+vanessa buzzell 
+buz20001@byui.edu
+
