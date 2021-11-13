@@ -8,3 +8,5 @@
 ## Authors
 ---
 * # TODO: Add your names and emails here
+vanessa buzzell 
+buz20001@byui.edu
