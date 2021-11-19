@@ -1,0 +1,69 @@
+import arcade
+from game import constants
+from game.action import Action
+
+class HandleCollisionsAction(Action):
+    """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
+
+    Stereotype:
+        Controller
+    """
+    # Vanessa
+    def execute(self, cast):
+        """Executes the action using the given actors.
+
+        Args:
+            cast (dict): The game actors {key: tag, value: list}.
+        """
+
+
+        coins = self.scene["coins"]
+        marquee = cast["marquee"][0]
+        self._handle_coin_collisions(coins, self.player_sprite)
+
+
+    def _handle_coin_collisions(self, coins, player_location):
+        """This function loops through the coin locations and the players location to see if they are the same. If True the coin is removed and point value is
+            added to the score.
+
+        Args:
+            self (Handle_collisions_Action): An instance of Handle_Collisions_Action
+            coins (Actor): is an instance of the Actor class
+            Player (Actor): An instance of the Actor class.
+        """
+
+        coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
+
+        for coin in coin_collision_list:
+            coin.remove_from_sprite_lists()
+            #arcade.play_sound()
+            self.score += 1
+
+    def _handle_riddlemaster_collision(self):
+        pass
+
+
+    def _handle_wall_constraints(self):
+        self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.scene.get_sprite_list("Walls"))
+
+
+    def _handle_deathzone_constraints(self):
+        pass
+
+
+    def _end_of_world_collisions(self):
+        pass
+
+
+    def _update_score(self, coin, marquee):
+        """This function gets the point value from the brick and adds it to the score. Then sets value of points
+            to the marquee.
+
+            Args:
+                marquee (Actor): marquee is an instance of Actor
+                coin (Actor): brick is an instance of Actor
+                points (integer): point value from Actor
+        """
+        points = coin.get_points()
+        marquee.add_points(points)
+        marquee.set_text(marquee.get_points())
