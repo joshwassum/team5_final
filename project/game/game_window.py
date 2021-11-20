@@ -50,6 +50,8 @@ class Game_Window(arcade.Window):
 
         self.gui_camera.use()
 
+        jump_sound = arcade.load_sound(":resources:sounds/phaseJump1.wav")
+
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. Handles the movement of the player_sprite
         Args:
@@ -59,6 +61,7 @@ class Game_Window(arcade.Window):
         if key == arcade.key.UP or key == arcade.key.W:
             if self.physics_engine.can_jump():
                 self.scene["Player"][0].change_y = constants.PLAYER_JUMP_SPEED
+                arcade.play_sound(self.jump_sound)
         elif key == arcade.key.DOWN or key == arcade.key.S:
             self.scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.LEFT or key == arcade.key.A:
