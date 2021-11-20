@@ -3,6 +3,7 @@ from game.director import Director
 from game.game_window import Game_Window
 
 def main():
+    """Calls the game Director Class the start the game."""
     director = Director()
     director.start_game()
 
