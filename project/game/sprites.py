@@ -2,7 +2,7 @@
 import arcade
 from game import constants
 
-class Actor():
+class Sprites():
 
     """This class is where the actors and their lists are created and stored
     """
@@ -14,6 +14,7 @@ class Actor():
 
         # Variable that holds teh player sprite
         self.player_sprite = None
+        self.setup()
 
 
     def setup(self):
@@ -31,7 +32,7 @@ class Actor():
         self.scene.add_sprite_list("Platform", use_spatial_hash=True)
 
         # Create the playing character
-        image_source = ":resources:images/animated_characters?robot/robot_walk0.png"
+        image_source = ":resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png"
         self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALE)
         self.player_sprite.center_x = constants.START_LOCATION_X
         self.player_sprite.center_y = constants.START_LOCATION_Y
