@@ -1,5 +1,4 @@
 import arcade
-from game import constants
 from game.action import Action
 
 class HandleCollisionsAction(Action):
@@ -39,22 +38,23 @@ class HandleCollisionsAction(Action):
             coin.remove_from_sprite_lists()
             arcade.play_sound(collect_coin_sound)
 
+    # TO DO
     def _handle_riddlemaster_collision(self):
         pass
 
-
+    # TO DO
     def _handle_wall_constraints(self):
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.scene.get_sprite_list("Walls"))
 
-
+    # TO DO
     def _handle_deathzone_constraints(self):
         pass
 
-
+    # TO DO
     def _end_of_world_collisions(self):
         pass
 
-
+######## FUTURE UPDATE ###########
     # def _update_score(self, coin, marquee):
     #     """This function gets the point value from the brick and adds it to the score. Then sets value of points
     #         to the marquee.

@@ -1,8 +1,8 @@
-from game import constants
 from game.director import Director
-from game.game_window import Game_Window
 
 def main():
+    """Initializes the game functionality.
+    """
     director = Director()
     director.start_game()
 
