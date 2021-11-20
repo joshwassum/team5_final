@@ -15,7 +15,7 @@ class Game_Window(arcade.Window):
         gui_camera (Camera): An instance of the Camera object.
     """
 
-    def __init__(self, scene):
+    def __init__(self, scene, collision_engine):
         """The class constructor
 
         Args:
@@ -26,6 +26,7 @@ class Game_Window(arcade.Window):
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         self.scene = scene
+        self.collision_engine = collision_engine
         self.camera = None
         self.physics_engine = None
         self.gui_camera = None
@@ -94,10 +95,16 @@ class Game_Window(arcade.Window):
     def _setup(self):
 
         self.physics_engine = arcade.PhysicsEnginePlatformer(
-            self.scene["Player"][0], gravity_constant=constants.GRAVITY, walls=self.scene["Walls"]
+            self.scene["Player"][0], gravity_constant=constants.GRAVITY, walls=self.scene["Platform"]
         )
 
         self.camera = arcade.Camera(self.width, self.height)
 
         # Setup the GUI Camera
         self.gui_camera = arcade.Camera(self.width, self.height)
+    
+    def on_update(self, delta_time):
+        """Movement and game logic"""
+        self.collision_engine.execute(self.scene)
+        # Move the player with the physics engine
+        self.physics_engine.update()

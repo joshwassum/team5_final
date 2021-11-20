@@ -17,9 +17,9 @@ class HandleCollisionsAction(Action):
         """
 
 
-        coins = self.scene["coins"]
-        marquee = cast["marquee"][0]
-        self._handle_coin_collisions(coins, self.player_sprite)
+        coins = cast["Coin"]
+        # marquee = cast["marquee"][0]
+        self._handle_coin_collisions(coins, cast["Player"][0])
 
 
     def _handle_coin_collisions(self, coins, player_location):
@@ -33,11 +33,11 @@ class HandleCollisionsAction(Action):
         """
 
         coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
+        collect_coin_sound = arcade.load_sound(":resources:sounds/coin1.wav")
 
         for coin in coin_collision_list:
             coin.remove_from_sprite_lists()
-            #arcade.play_sound()
-            self.score += 1
+            arcade.play_sound(collect_coin_sound)
 
     def _handle_riddlemaster_collision(self):
         pass
@@ -55,15 +55,15 @@ class HandleCollisionsAction(Action):
         pass
 
 
-    def _update_score(self, coin, marquee):
-        """This function gets the point value from the brick and adds it to the score. Then sets value of points
-            to the marquee.
+    # def _update_score(self, coin, marquee):
+    #     """This function gets the point value from the brick and adds it to the score. Then sets value of points
+    #         to the marquee.
 
-            Args:
-                marquee (Actor): marquee is an instance of Actor
-                coin (Actor): brick is an instance of Actor
-                points (integer): point value from Actor
-        """
-        points = coin.get_points()
-        marquee.add_points(points)
-        marquee.set_text(marquee.get_points())
+    #         Args:
+    #             marquee (Actor): marquee is an instance of Actor
+    #             coin (Actor): brick is an instance of Actor
+    #             points (integer): point value from Actor
+    #     """
+    #     points = coin.get_points()
+    #     marquee.add_points(points)
+    #     marquee.set_text(marquee.get_points())
