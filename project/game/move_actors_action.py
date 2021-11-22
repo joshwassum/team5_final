@@ -15,13 +15,13 @@ class Move_Sprites_Action(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def execute(self, cast):
+    def execute(cast, window):
         """Executes the action using the given actors.
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        self.scene = cast
+        scene = cast
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. Handles the movement of the player_sprite
