@@ -4,7 +4,7 @@ import arcade
 from game import constants
 from game.action import Action
 
-class Move_Sprites_Action(Action):
+class ControlSpritesAction(Action):
     """A code template for moving actors. The responsibility of this class of
     objects is move any actor that has a velocity more than zero.
 

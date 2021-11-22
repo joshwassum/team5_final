@@ -1,12 +1,12 @@
-from game.director import Director
 import arcade
-from game.game_view import Game_View
+from game.director import Director
 from game.sprites import Sprites
-from game.handle_collisions_action import HandleCollisionsAction
 from game import constants
 
+
 def main():
-    """Initializes the game functionality.
+    """main activates the game and its various functions by gathering the various componenets of the app.
+    It then groups them in to various sub groups and creates a scene for the director to use
     """
     scene = arcade.Scene()
 
@@ -35,10 +35,14 @@ def main():
         coin_sprite.set_sprite(arcade.Sprite(coin_sprite.get_image_source(), constants.COIN_SCALE))
         coin_sprite.get_sprite().position = coordinate
         scene.add_sprite("Coin", coin_sprite.get_sprite())
+
+    
     
     window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
-    director = Director(window)
-    director.start_game(scene)
+
+    # Starts the game
+    director = Director(scene, window)
+    director.start_game()
 
 if __name__ == "__main__":
     main()

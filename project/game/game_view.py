@@ -1,6 +1,7 @@
 import arcade
 from game import constants
-from game.move_sprites_action import Move_Sprites_Action
+from game.control_sprites_action import ControlSpritesAction
+from game.handle_collisions_action import HandleCollisionsAction
 
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
@@ -17,7 +18,7 @@ class Game_View(arcade.View):
         gui_camera (Camera): An instance of the Camera object.
     """
 
-    def __init__(self, scene, collision_engine):
+    def __init__(self, scene):
         """The class constructor
 
         Args:
@@ -28,10 +29,9 @@ class Game_View(arcade.View):
         super().__init__()
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
-        self.movement_engine = Move_Sprites_Action()
-        self.window.set_mouse_visible(False)
+        self.movement_engine = ControlSpritesAction()
+        self.collision_engine = HandleCollisionsAction()
         self.scene = scene
-        self.collision_engine = collision_engine
         self.camera = None
         self.physics_engine = None
         self.gui_camera = None
@@ -90,7 +90,6 @@ class Game_View(arcade.View):
         Args:
             self (Game_Window): An instance of the Game_Window object.
         """
-
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.scene["Player"][0], gravity_constant=constants.GRAVITY, walls=self.scene["Platform"]
         )
