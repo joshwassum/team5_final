@@ -1,6 +1,6 @@
 from game.director import Director
 import arcade
-from game.game_window import Game_Window
+from game.game_view import Game_View
 from game.sprites import Sprites
 from game.handle_collisions_action import HandleCollisionsAction
 from game import constants
@@ -35,8 +35,9 @@ def main():
         coin_sprite.set_sprite(arcade.Sprite(coin_sprite.get_image_source(), constants.COIN_SCALE))
         coin_sprite.get_sprite().position = coordinate
         scene.add_sprite("Coin", coin_sprite.get_sprite())
-
-    director = Director()
+    
+    window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
+    director = Director(window)
     director.start_game(scene)
 
 if __name__ == "__main__":

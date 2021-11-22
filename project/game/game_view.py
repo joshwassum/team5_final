@@ -1,7 +1,8 @@
 import arcade
 from game import constants
+from game.move_sprites_action import Move_Sprites_Action
 
-class Game_Window(arcade.Window):
+class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
     arcade to track movement and camera setup.
 
@@ -24,9 +25,11 @@ class Game_Window(arcade.Window):
             collision_engine (Handle_Collisions_Action): An instance of the Handle_Collisions_Action object.
         """
 
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
+        super().__init__()
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
+        self.movement_engine = Move_Sprites_Action()
+        self.window.set_mouse_visible(False)
         self.scene = scene
         self.collision_engine = collision_engine
         self.camera = None
@@ -54,28 +57,14 @@ class Game_Window(arcade.Window):
         Args:
             self (Game_Window): An instance of the Game_Window object
         """
-
-        if key == arcade.key.UP or key == arcade.key.W:
-            if self.physics_engine.can_jump():
-                self.scene["Player"][0].change_y = constants.PLAYER_JUMP_SPEED
-        elif key == arcade.key.DOWN or key == arcade.key.S:
-            self.scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.LEFT or key == arcade.key.A:
-            self.scene["Player"][0].change_x = -constants.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.scene["Player"][0].change_x = constants.PLAYER_MOVEMENT_SPEED
+        press = True
+        self.movement_engine.execute(self.scene, key, self.physics_engine,press)
 
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key."""
+        press = False
+        self.movement_engine.execute(self.scene,key, self.physics_engine, press)
 
-        if key == arcade.key.UP or key == arcade.key.W:
-            self.scene["Player"][0].change_y = 0
-        elif key == arcade.key.DOWN or key == arcade.key.S:
-            self.scene["Player"][0].change_y = 0
-        elif key == arcade.key.LEFT or key == arcade.key.A:
-            self.scene["Player"][0].change_x = 0
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.scene["Player"][0].change_x = 0
 
     def center_camera_to_player(self):
         """Keeps the camera centered on the player character.
@@ -105,8 +94,8 @@ class Game_Window(arcade.Window):
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.scene["Player"][0], gravity_constant=constants.GRAVITY, walls=self.scene["Platform"]
         )
-        self.camera = arcade.Camera(self.width, self.height)
-        self.gui_camera = arcade.Camera(self.width, self.height)
+        self.camera = arcade.Camera(self.window.width, self.window.height)
+        self.gui_camera = arcade.Camera(self.window.width, self.window.height)
     
     def on_update(self, delta_time):
         """Movement and game logic
