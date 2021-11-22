@@ -9,8 +9,8 @@ class Sprites():
         Information Holder.
 
     Attributes:
-        scene (Scene): An instance of the Scene object.
-        player_sprite(Sprite): An instance of the Sprite object.
+        sprite (Sprite): An instance of the Sprite object.
+        image_path (str): A path to the sprites image file.
     """
 
     def __init__(self):
@@ -20,62 +20,21 @@ class Sprites():
             self (Sprites): An instance of the Sprites object.
 
         """
-        self.scene = None
-        self.player_sprite = None
+        sprite = None
+        image_source = ""
 
+    def set_sprite(self, sprite):
 
-    def create_sprites(self):
-        """The setup function is used to set up all the pieces in the game.
+        self.sprite = sprite
 
-        Args:
-            self (Sprites): An instance of the Sprites object.
-        """
+    def get_sprite(self):
 
-        self.scene = arcade.Scene()
-        self._create_platform()
-        self._create_player()
-        self._create_coins()
+        return self.sprite
 
-    def _create_player(self):
-        """Manages the creation of the player sprite.
-        
-        Args:
-            self (Sprites): An instance of the Sprites object.
-        """
+    def set_image_source(self, source):
 
-        self.scene.add_sprite_list("Player")
+        self.image_source = source
 
-        image_source = ":resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png"
-        self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALE)
-        self.player_sprite.center_x = constants.START_LOCATION_X
-        self.player_sprite.center_y = constants.START_LOCATION_Y
-        self.scene.add_sprite("Player", self.player_sprite)
+    def get_image_source(self):
 
-    def _create_platform(self):
-        """Manages the creation of the platform sprites.
-        
-        Args:
-            self (Sprites): An instance of the Sprites object.
-        """
-
-        self.scene.add_sprite_list("Platform", use_spatial_hash=True)
-
-        for x in range(0, constants.SCREEN_WIDTH + 20, 64):
-            platform = arcade.Sprite(":resources:images/tiles/grassMid.png", constants.TILE_SCALE)
-            platform.center_x = x
-            platform.center_y = 32
-            self.scene.add_sprite("Platform", platform)
-
-    def _create_coins(self):
-        """Manages the creation of the coin sprites.
-        
-        Args:
-            self (Sprites): An instance of the Sprites object.
-        """
-
-        coin_list_location = [[300, 96], [500, 96], [700, 96]]
-
-        for coordinate in coin_list_location:
-            coin = arcade.Sprite(":resources:images/items/coinGold.png", constants.COIN_SCALE)
-            coin.position = coordinate
-            self.scene.add_sprite("Coin", coin)
+        return self.image_source
