@@ -99,7 +99,7 @@ class Game_View(arcade.View):
             self (Game_Window): An instance of the Game_Window object.
         """
         self.physics_engine = arcade.PhysicsEnginePlatformer(
-            self.scene[LAYER_NAME_PLAYER][0], gravity_constant=constants.GRAVITY, walls=self.scene[LAYER_NAME_PLATFORMS]
+            self.scene["Player"][0], gravity_constant=constants.GRAVITY, walls=self.scene[LAYER_NAME_PLATFORMS]
         )
         self.camera = arcade.Camera(self.window.width, self.window.height)
         self.gui_camera = arcade.Camera(self.window.width, self.window.height)
@@ -115,3 +115,4 @@ class Game_View(arcade.View):
         """
         self.collision_engine.execute(self.scene, self.coin_collect_sound)
         self.physics_engine.update()
+        self.center_camera_to_player()
