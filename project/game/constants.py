@@ -11,3 +11,16 @@ COIN_SCALE = .5
 PLAYER_MOVEMENT_SPEED = 5
 GRAVITY = 1
 PLAYER_JUMP_SPEED = 20
+
+COIN_COLLISION_SOUND = ":resources:sounds/coin1.wav"
+PLAYER_JUMP_SOUND = ":resources:sounds/phasejump1.wav"
+MAP_NAME = "project/game/assests/map_sample.json"
+
+LAYER_NAME_MOVING_PLATFORMS = "Moving Platforms"
+LAYER_NAME_PLATFORMS = "Platforms"
+LAYER_NAME_COINS = "Coins"
+LAYER_NAME_BACKGROUND = "Background"
+LAYER_NAME_LADDERS = "Ladders"
+LAYER_NAME_PLAYER = "Player"
+LAYER_NAME_ENEMIES = "Enemies"
+LAYER_NAME_BULLETS = "Bullets"
