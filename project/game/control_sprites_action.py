@@ -28,15 +28,13 @@ class ControlSpritesAction(Action):
         else:
             self._handle_stop(cast, key)
 
-
+        
 
     def _handle_movement(self, scene, key, physics_engine):
-        jump_sound = arcade.load_sound(":resources:sounds/jump1.wav")
         if key == arcade.key.UP or key == arcade.key.W:
             if physics_engine.can_jump():
                 scene["Player"][0].change_y = constants.PLAYER_JUMP_SPEED
-                arcade.play_sound(jump_sound)
-
+                arcade.play_sound(self.jump_sound)
         elif key == arcade.key.DOWN or key == arcade.key.S:
             scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.LEFT or key == arcade.key.A:
