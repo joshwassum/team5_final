@@ -16,6 +16,11 @@ class HandleCollisionsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
 
+        lives = 0
+        if cast["Player"][0].center_y < -10:
+            self._handle_deathzone_constraints(lives)
+        coins = cast["Coins"]
+
 
         coins = cast["Coins"]
         # marquee = cast["marquee"][0]
@@ -30,9 +35,10 @@ class HandleCollisionsAction(Action):
 
         Args:
             self (Handle_collisions_Action): An instance of Handle_Collisions_Action
-            coins (Sprites): is an instance of the Actor class
-            Player (Sprites): An instance of the Actor class.
-        """
+
+
+            coins (Sprite): is an instance of the Sprites class
+            Player (Sprite): An instance of the Sprites class.
 
         coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
 
