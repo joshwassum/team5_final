@@ -1,7 +1,5 @@
 import arcade
 from game.action import Action
-from game import constants
-from game import game_view
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -9,7 +7,8 @@ class HandleCollisionsAction(Action):
     Stereotype:
         Controller
     """
-    def execute(self, cast, coin_sound):
+    # Vanessa
+    def execute(self, cast):
         """Executes the action using the given actors.
 
         Args:
@@ -17,11 +16,9 @@ class HandleCollisionsAction(Action):
         """
 
 
-        coins = cast["Coins"]
+        coins = cast["Coin"]
         # marquee = cast["marquee"][0]
         self._handle_coin_collisions(coins, cast["Player"][0])
-        self.coin_collect_sound = coin_sound
-        
 
 
     def _handle_coin_collisions(self, coins, player_location):
@@ -30,16 +27,16 @@ class HandleCollisionsAction(Action):
 
         Args:
             self (Handle_collisions_Action): An instance of Handle_Collisions_Action
-            coins (Sprites): is an instance of the Actor class
-            Player (Sprites): An instance of the Actor class.
+            coins (Actor): is an instance of the Actor class
+            Player (Actor): An instance of the Actor class.
         """
 
         coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
-
+        collect_coin_sound = arcade.load_sound(":resources:sounds/coin1.wav")
 
         for coin in coin_collision_list:
             coin.remove_from_sprite_lists()
-            arcade.play_sound(self.coin_collect_sound)
+            arcade.play_sound(collect_coin_sound)
 
     # TO DO
     def _handle_riddlemaster_collision(self):
