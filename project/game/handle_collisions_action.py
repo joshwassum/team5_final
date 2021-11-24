@@ -16,11 +16,8 @@ class HandleCollisionsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
 
-        lives = 0
-        if cast["Player"][0].center_y < -10:
-            self._handle_deathzone_constraints(lives)
-        coins = cast["Coin"]
 
+        coins = cast["Coins"]
         # marquee = cast["marquee"][0]
         self._handle_coin_collisions(coins, cast["Player"][0])
         self.coin_collect_sound = coin_sound
@@ -33,10 +30,9 @@ class HandleCollisionsAction(Action):
 
         Args:
             self (Handle_collisions_Action): An instance of Handle_Collisions_Action
-
-            coins (Sprite): is an instance of the Sprites class
-            Player (Sprite): An instance of the Sprites class.
-
+            coins (Sprites): is an instance of the Actor class
+            Player (Sprites): An instance of the Actor class.
+        """
 
         coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
 
@@ -54,13 +50,8 @@ class HandleCollisionsAction(Action):
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.scene.get_sprite_list("Walls"))
 
     # TO DO
-    def _handle_deathzone_constraints(self, lives):
-        if lives == 0:
-            quit()
-        # else:
-        #   lives -= 1
-        #   reset the player
-
+    def _handle_deathzone_constraints(self):
+        pass
 
     # TO DO
     def _end_of_world_collisions(self):
@@ -75,10 +66,7 @@ class HandleCollisionsAction(Action):
     #             marquee (Actor): marquee is an instance of Actor
     #             coin (Actor): brick is an instance of Actor
     #             points (integer): point value from Actor
-    #             lives (integer): how many lives left
     #     """
     #     points = coin.get_points()
-    #     lives = 3
     #     marquee.add_points(points)
-    #     marquee.set_text(marquee.get_lives())
     #     marquee.set_text(marquee.get_points())
