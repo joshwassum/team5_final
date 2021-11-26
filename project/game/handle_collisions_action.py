@@ -16,10 +16,8 @@ class HandleCollisionsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
 
-        lives = 0
         if cast["Player"][0].center_y < -10:
-            self._handle_deathzone_constraints(lives)
-        coins = cast["Coins"]
+            self._handle_deathzone_constraints(game_view.self.lives)
 
 
         coins = cast["Coins"]
@@ -39,6 +37,8 @@ class HandleCollisionsAction(Action):
 
             coins (Sprite): is an instance of the Sprites class
             Player (Sprite): An instance of the Sprites class.
+        """
+
 
         coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
 
@@ -47,6 +47,9 @@ class HandleCollisionsAction(Action):
             coin.remove_from_sprite_lists()
             arcade.play_sound(self.coin_collect_sound)
 
+
+
+    """
     # TO DO
     def _handle_riddlemaster_collision(self):
         pass
@@ -65,7 +68,7 @@ class HandleCollisionsAction(Action):
 
 ######## FUTURE UPDATE ###########
     # def _update_score(self, coin, marquee):
-    #     """This function gets the point value from the brick and adds it to the score. Then sets value of points
+    #     This function gets the point value from the brick and adds it to the score. Then sets value of points
     #         to the marquee.
 
     #         Args:
