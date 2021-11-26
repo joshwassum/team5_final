@@ -44,7 +44,7 @@ def main():
     player_sprite.get_sprite().center_y = constants.START_LOCATION_Y
     scene.add_sprite("Player", player_sprite.get_sprite())
 
- 
+
 
 
     # scene.add_sprite_list("Coin", use_spatial_hash=True)
@@ -56,8 +56,8 @@ def main():
     #     coin_sprite.get_sprite().position = coordinate
     #     scene.add_sprite("Coin", coin_sprite.get_sprite())
 
-    
-    
+
+
     window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
 
     # Starts the game

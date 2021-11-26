@@ -39,6 +39,7 @@ class HandleCollisionsAction(Action):
 
             coins (Sprite): is an instance of the Sprites class
             Player (Sprite): An instance of the Sprites class.
+            """
 
         coin_collision_list = arcade.check_for_collision_with_list(player_location, coins)
 
