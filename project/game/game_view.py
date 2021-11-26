@@ -4,12 +4,13 @@ from game.control_sprites_action import ControlSpritesAction
 from game.handle_collisions_action import HandleCollisionsAction
 from game.constants import LAYER_NAME_PLATFORMS
 from game.constants import LAYER_NAME_PLAYER
+from game import marquee
 
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
     arcade to track movement and camera setup.
 
-    Sterotype:
+    Stereotype:
         Service Provider
 
     Attributes:
@@ -40,6 +41,9 @@ class Game_View(arcade.View):
         self._setup()
         self.coin_collect_sound = arcade.load_sound(constants.COIN_COLLISION_SOUND)
         self.jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
+        self.lives = 5
+        self.score = 0
+        self. crystals = 0
 
         self.tile_map = None
         self.end_of_map = 0
@@ -60,6 +64,7 @@ class Game_View(arcade.View):
 
         self.gui_camera.use()
 
+
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. Handles the movement of the player_sprite
         Args:
@@ -76,7 +81,7 @@ class Game_View(arcade.View):
 
     def center_camera_to_player(self):
         """Keeps the camera centered on the player character.
-        
+
         Args:
             self (Game_Window): An instance of the Game_Window object.
         """
@@ -93,8 +98,8 @@ class Game_View(arcade.View):
         self.camera.move_to(player_centered)
 
     def _setup(self):
-        """Handles the stup of our needed attributes and functions.
-        
+        """Handles the setup of our needed attributes and functions.
+
         Args:
             self (Game_Window): An instance of the Game_Window object.
         """
@@ -104,11 +109,17 @@ class Game_View(arcade.View):
         self.camera = arcade.Camera(self.window.width, self.window.height)
         self.gui_camera = arcade.Camera(self.window.width, self.window.height)
 
+        marquee.player_lives(self.lives)
+        marquee.count_score(self.score)
+        marquee.count_score(self.crystals)
 
-    
+
+
+
+
     def on_update(self, delta_time):
         """Movement and game logic
-        
+
         Args:
             self (Game_Window): An instance of the Game_Window object.
             delta_time (Time): An instance of time.
