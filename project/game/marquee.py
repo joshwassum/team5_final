@@ -1,45 +1,37 @@
 import arcade
-from arcade.color import WHITE
+
 from game import constants
 
 
 class Marquee():
-    """Marquee is used to show inforation such as how many lives the player has, how many coins they have collected, and how many crystals they have collected.
-
-    Args:
-        player_lives (output): prints to the screen how many lives the player has
-
-        count_score (output): prints to the screen how many points the player has
-
-        count_crystals (output): print to the screen how many crystals the player has
+    """Marquee is used to show information such as how many lives the player has, how many coins they have collected, and how many crystals they have collected.
     """
 
-    def player_lives(lives):
-        lives_text = f"Lives: {lives}"
-        arcade.draw_text(
-            lives_text,
-            210,
-            constants.SCREEN_HEIGHT - 10,
-            arcade.csscolor,WHITE,
-            18
-        )
+    def __init__(self):
 
-    def count_score(score):
-        score_text = f"Score: {score}"
-        arcade.draw_text(
-            score_text,
-            110,
-            constants.SCREEN_HEIGHT - 10,
-            arcade.csscolor,WHITE,
-            18
-        )
+        """The class constructor
+        
+        Args:
+            self (Marquee): an instance of the Marquee object.
+        """
 
-    def count_crystals(crystals):
-        crystal_text = f"Crystals: {crystals}"
-        arcade.draw_text(
-            crystal_text,
-            10,
-            constants.SCREEN_HEIGHT - 10,
-            arcade.csscolor,WHITE,
-            18
-        )
+        self._text = None
+
+
+    def set_text(self, text):
+        """Class setter, in charge of setting the text.
+
+        Args:
+            self (Marquee): An instance of Marquee
+            text (String): String to set self._text to
+        """
+
+        self._text = text
+
+    def get_text(self): 
+        """Class Getter, returns the self._text element.
+
+        Args:
+            self (Marquee): an instance of Marquee.
+        """
+        return self._text

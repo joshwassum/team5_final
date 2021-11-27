@@ -16,13 +16,14 @@ class Director:
         scene (Scene): an instance of the Scene object.
         collision_engine (Handle_Collisions_Action): an instance off the Handle_Collisions_Action object.
     """
-    def __init__(self, scene, window):
+    def __init__(self, scene, cast, window):
         """The class constructor
         
         Args:
             self (Director): an instance of the Director object.
         """
         self.scene = scene
+        self.cast = cast
         self.window = window
 
     def start_game(self):
@@ -31,7 +32,7 @@ class Director:
         Args:
             self (Director): An instance of the Director object.
         """
-        start_view = StartView(self.scene)
+        start_view = StartView(self.scene, self.cast)
         self.window.show_view(start_view)
         arcade.run()
 
