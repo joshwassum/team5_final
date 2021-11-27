@@ -1,10 +1,12 @@
 import arcade
 from game.start_view import StartView
 from game.actor import Actor
-from game import constants
+from game import constants, handle_crystal_collision_action, handle_trap_collision_action
 from game.sprites import Sprites
 from game.handle_coin_collision_action import HandleCoinCollisionAction
 from game.handle_death_collision_action import HandleDeathCollisionAction
+from game.handle_crystal_collision_action import HandleCrystalCollisionAction
+from game.handle_trap_collision_action import HandleTrapCollisionAction
 from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
 
@@ -24,8 +26,8 @@ def main():
         constants.LAYER_NAME_PLATFORMS: {
             "use_spatial_hash": True,
         },
-        constants.LAYER_NAME_MOVING_PLATFORMS: {
-                "use_spatial_hash": False,
+        constants.LAYER_NAME_FOREGROUND: {
+                "use_spatial_hash": True,
             },
         constants.LAYER_NAME_LADDERS: {
             "use_spatial_hash": True,
@@ -34,6 +36,18 @@ def main():
             "use_spatial_hash": True,
             },
         constants.LAYER_NAME_PLAYER: {
+            "use_spatial_hash": True,
+            },
+        constants.LAYER_NAME_TRAPS: {
+            "use_spatial_hash": True,
+            },        
+        constants.LAYER_NAME_CRYSTALS: {
+            "use_spatial_hash": True,
+            },
+        constants.LAYER_NAME_BACKGROUND: {
+            "use_spatial_hash": True,
+            },
+        constants.LAYER_NAME_RIDDLEMASTER: {
             "use_spatial_hash": True,
             },
     }
@@ -83,7 +97,9 @@ def main():
     # Initializing collision objects and storing them in script
     handle_death_collision_action = HandleDeathCollisionAction()
     handle_coin_collision_action = HandleCoinCollisionAction()
-    script["update"] = [handle_coin_collision_action, handle_death_collision_action]
+    handle_crystal_collision_action = HandleCrystalCollisionAction()
+    handle_trap_collision_action = HandleTrapCollisionAction()
+    script["update"] = [handle_coin_collision_action, handle_death_collision_action, handle_crystal_collision_action, handle_trap_collision_action]
 
     # Initializing draw objects and storing it in script
     draw_cast_action = DrawCastAction()
@@ -104,7 +120,10 @@ def main():
 
     # Initializing physics engine and storing it in props
     physics_engine = arcade.PhysicsEnginePlatformer(
-        scene["Player"][0], gravity_constant=constants.GRAVITY, walls=scene[constants.LAYER_NAME_PLATFORMS]
+        scene["Player"][0], 
+        gravity_constant=constants.GRAVITY, 
+        walls=scene[constants.LAYER_NAME_PLATFORMS],
+        ladders=scene[constants.LAYER_NAME_LADDERS],
     )
     props["physics_engine"] = physics_engine
     
