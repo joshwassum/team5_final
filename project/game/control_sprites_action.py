@@ -15,7 +15,7 @@ class ControlSpritesAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def execute(self, cast, key, physics_engine,press, jump_sound):
+    def execute(self, scene, key, physics_engine,press, jump_sound):
         """Executes the action using the given sprites.
 
         Args:
@@ -24,9 +24,9 @@ class ControlSpritesAction(Action):
         self.jump_sound = jump_sound
 
         if press:
-            self._handle_movement(cast, key, physics_engine)
+            self._handle_movement(scene, key, physics_engine)
         else:
-            self._handle_stop(cast, key)
+            self._handle_stop(scene, key)
 
         
 

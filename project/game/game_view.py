@@ -2,9 +2,9 @@ import arcade
 from game import constants
 from game.control_sprites_action import ControlSpritesAction
 from game.handle_collisions_action import HandleCollisionsAction
+from game.draw_cast_action import DrawCastAction
 from game.constants import LAYER_NAME_PLATFORMS
 from game.constants import LAYER_NAME_PLAYER
-from game import marquee
 
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
@@ -21,7 +21,7 @@ class Game_View(arcade.View):
         gui_camera (Camera): An instance of the Camera object.
     """
 
-    def __init__(self, scene):
+    def __init__(self, scene, cast):
         """The class constructor
 
         Args:
@@ -34,16 +34,15 @@ class Game_View(arcade.View):
 
         self.movement_engine = ControlSpritesAction()
         self.collision_engine = HandleCollisionsAction()
+        self.draw_engine = DrawCastAction()
         self.scene = scene
+        self.cast = cast
         self.camera = None
         self.physics_engine = None
         self.gui_camera = None
         self._setup()
         self.coin_collect_sound = arcade.load_sound(constants.COIN_COLLISION_SOUND)
         self.jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
-        self.lives = 5
-        self.score = 0
-        self. crystals = 0
 
         self.tile_map = None
         self.end_of_map = 0
@@ -63,6 +62,8 @@ class Game_View(arcade.View):
         self.scene.draw()
 
         self.gui_camera.use()
+
+        self.draw_engine.execute(self.cast)
 
 
     def on_key_press(self, key, modifiers):
@@ -108,10 +109,6 @@ class Game_View(arcade.View):
         )
         self.camera = arcade.Camera(self.window.width, self.window.height)
         self.gui_camera = arcade.Camera(self.window.width, self.window.height)
-
-        marquee.player_lives(self.lives)
-        marquee.count_score(self.score)
-        marquee.count_score(self.crystals)
 
 
 

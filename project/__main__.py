@@ -2,6 +2,7 @@ import arcade
 from game.director import Director
 from game.sprites import Sprites
 from game import constants
+from game.marquee import Marquee
 
 
 def main():
@@ -44,24 +45,28 @@ def main():
     player_sprite.get_sprite().center_y = constants.START_LOCATION_Y
     scene.add_sprite("Player", player_sprite.get_sprite())
 
- 
+    cast = {}
+
+    lives = Marquee()
+    lives.set_text(5)
+    cast["lives"] = lives
+
+    score = Marquee()
+    score.set_text(0)
+    cast["score"] = score
+
+    crystals = Marquee()
+    crystals.set_text(0)
+    cast["crystals"] = crystals
 
 
-    # scene.add_sprite_list("Coin", use_spatial_hash=True)
-    # coin_list_location = [[300, 96], [500, 96], [700, 96]]
-    # for coordinate in coin_list_location:
-    #     coin_sprite = Sprites()
-    #     coin_sprite.set_image_source(":resources:images/items/coinGold.png")
-    #     coin_sprite.set_sprite(arcade.Sprite(coin_sprite.get_image_source(), constants.COIN_SCALE))
-    #     coin_sprite.get_sprite().position = coordinate
-    #     scene.add_sprite("Coin", coin_sprite.get_sprite())
 
-    
+
     
     window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
 
     # Starts the game
-    director = Director(scene, window)
+    director = Director(scene, cast, window)
     director.start_game()
 
 if __name__ == "__main__":

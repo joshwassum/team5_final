@@ -3,7 +3,7 @@ from game.game_view import Game_View
 
 class StartView(arcade.View):
 
-    def __init__(self, scene):
+    def __init__(self, scene, cast):
         """The class constructor
 
         Args:
@@ -12,6 +12,7 @@ class StartView(arcade.View):
         """
         super().__init__()
         self.scene = scene
+        self.cast = cast
 
     def on_show(self):
         """ This is run once when we switch to this view """
@@ -32,5 +33,5 @@ class StartView(arcade.View):
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         """ If the user presses the mouse button, start the game. """
         
-        game_view = Game_View(self.scene)
+        game_view = Game_View(self.scene, self.cast)
         self.window.show_view(game_view)
