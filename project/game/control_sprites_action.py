@@ -1,5 +1,3 @@
-"""THIS IS A TEST CLASS, DOES NOT CURRENTLY WORK"""
-
 import arcade
 from game import constants
 from game.action import Action
@@ -15,26 +13,26 @@ class ControlSpritesAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def execute(self, scene, key, physics_engine,press, jump_sound):
+    def execute(self, scene, key, physics_engine, press):
         """Executes the action using the given sprites.
 
         Args:
             cast (dict): The game sprites {key: tag, value: list}.
         """
-        self.jump_sound = jump_sound
+        jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
 
         if press:
-            self._handle_movement(scene, key, physics_engine)
+            self._handle_movement(scene, key, physics_engine, jump_sound)
         else:
             self._handle_stop(scene, key)
 
         
 
-    def _handle_movement(self, scene, key, physics_engine):
+    def _handle_movement(self, scene, key, physics_engine, jump_sound):
         if key == arcade.key.UP or key == arcade.key.W:
             if physics_engine.can_jump():
                 scene["Player"][0].change_y = constants.PLAYER_JUMP_SPEED
-                arcade.play_sound(self.jump_sound)
+                arcade.play_sound(jump_sound)
         elif key == arcade.key.DOWN or key == arcade.key.S:
             scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.LEFT or key == arcade.key.A:
