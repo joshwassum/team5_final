@@ -1,10 +1,4 @@
 import arcade
-from game import constants
-from game.control_sprites_action import ControlSpritesAction
-from game.handle_coin_collision_action import HandleCoinCollisionAction
-from game.draw_cast_action import DrawCastAction
-from game.constants import LAYER_NAME_PLATFORMS
-from game.constants import LAYER_NAME_PLAYER
 
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
@@ -14,36 +8,35 @@ class Game_View(arcade.View):
         Service Provider
 
     Attributes:
+        script (dict): The game Actions {key: tag, value: Action}
         scene (Scene): An instance of the arcade Scene object.
-        collision_engine (Handle_Collisions_Action): An instance of the Handle_Collisions_Action object.
+        cast (dict): The game actors {key: tag, value: list}.
         camera (Camera): An instance of the Camera object.
-        physics_engine (PhysicsEnginePlatformer): An instance of the PhysicsEnginePlatformer object.
         gui_camera (Camera): An instance of the Camera object.
+        end_of_map (int): Sets the end of the map.
+        level (int): Indicates which level the player is on.
     """
 
-    def __init__(self, scene, cast):
+    def __init__(self, scene, cast, script, props):
         """The class constructor
 
         Args:
-            scene (Scene): An instance of the Scene object
-            collision_engine (Handle_Collisions_Action): An instance of the Handle_Collisions_Action object.
+            script (dict): The game Actions {key: tag, value: Action}
+            self (GameView): An instance of GameView.
+            scene (Scene): An instance of the Scene object.
+            cast (dict): The game actors {key: tag, value: list}.
+            props (dict): The game interface objects {key: tag, value: Arcade Object}
         """
 
         super().__init__()
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
-        self.movement_engine = ControlSpritesAction()
-        self.collision_engine = HandleCoinCollisionAction()
-        self.draw_engine = DrawCastAction()
+        self.script = script
         self.scene = scene
         self.cast = cast
-        self.camera = None
-        self.physics_engine = None
-        self.gui_camera = None
-        self._setup()
-        self.jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
-
-        self.tile_map = None
+        self.camera = props["camera"]
+        self.physics_engine = props["physics_engine"]
+        self.gui_camera = props["gui_camera"]
         self.end_of_map = 0
         self.level = 1
 
@@ -62,21 +55,25 @@ class Game_View(arcade.View):
 
         self.gui_camera.use()
 
-        self.draw_engine.execute(self.cast)
+        for action in self.script["draw"]:
+            action.execute(self.cast)
 
 
     def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed. Handles the movement of the player_sprite
+        """Called whenever a key is pressed. Handles the movement of the player_sprite.
         Args:
-            self (Game_Window): An instance of the Game_Window object
+            self (Game_Window): An instance of the Game_Window object.
         """
         press = True
-        self.movement_engine.execute(self.scene, key, self.physics_engine,press, self.jump_sound)
+        self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
 
     def on_key_release(self, key, modifiers):
-        """Called when the user releases a key."""
+        """Called when the user releases a key.
+        Args:
+            self (Game_View): An instance of Game_View.
+        """
         press = False
-        self.movement_engine.execute(self.scene,key, self.physics_engine, press, self.jump_sound)
+        self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
 
 
     def center_camera_to_player(self):
@@ -97,22 +94,6 @@ class Game_View(arcade.View):
 
         self.camera.move_to(player_centered)
 
-    def _setup(self):
-        """Handles the setup of our needed attributes and functions.
-
-        Args:
-            self (Game_Window): An instance of the Game_Window object.
-        """
-        self.physics_engine = arcade.PhysicsEnginePlatformer(
-            self.scene["Player"][0], gravity_constant=constants.GRAVITY, walls=self.scene[LAYER_NAME_PLATFORMS]
-        )
-        self.camera = arcade.Camera(self.window.width, self.window.height)
-        self.gui_camera = arcade.Camera(self.window.width, self.window.height)
-
-
-
-
-
     def on_update(self, delta_time):
         """Movement and game logic
 
@@ -120,6 +101,7 @@ class Game_View(arcade.View):
             self (Game_Window): An instance of the Game_Window object.
             delta_time (Time): An instance of time.
         """
-        self.collision_engine.execute(self.scene, self.cast)
+        for action in self.script["update"]:
+            action.execute(self.scene, self.cast)
         self.physics_engine.update()
         self.center_camera_to_player()

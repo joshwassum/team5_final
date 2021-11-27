@@ -1,9 +1,8 @@
 import arcade
 from game.action import Action
 from game import constants
-from game import game_view
 
-class HandleDeathCollision(Action):
+class HandleDeathCollisionAction(Action):
     """A code template for handling death collisions. The responsibility of this class of objects is to update the game state when actors dies.
 
     Stereotype:
@@ -30,10 +29,10 @@ class HandleDeathCollision(Action):
             lives (cast): is an instance of the marquee class
             Player (Sprite): An instance of the Sprites class.
         """
-        death_sound = arcade.load_sound(constants.DEATH_SOUND)
+        # death_sound = arcade.load_sound(constants.DEATH_SOUND)
 
         if player_location.center_y < -10:
-            arcade.play_sound(death_sound)
+            # arcade.play_sound(death_sound)
             lives.subtract_number()
             if lives == 0:
                 quit()
