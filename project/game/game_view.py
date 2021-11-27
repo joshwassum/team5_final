@@ -1,7 +1,7 @@
 import arcade
 from game import constants
 from game.control_sprites_action import ControlSpritesAction
-from game.handle_collisions_action import HandleCollisionsAction
+from game.handle_coin_collision_action import HandleCoinCollisionAction
 from game.draw_cast_action import DrawCastAction
 from game.constants import LAYER_NAME_PLATFORMS
 from game.constants import LAYER_NAME_PLAYER
@@ -33,7 +33,7 @@ class Game_View(arcade.View):
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         self.movement_engine = ControlSpritesAction()
-        self.collision_engine = HandleCollisionsAction()
+        self.collision_engine = HandleCoinCollisionAction()
         self.draw_engine = DrawCastAction()
         self.scene = scene
         self.cast = cast
@@ -41,7 +41,6 @@ class Game_View(arcade.View):
         self.physics_engine = None
         self.gui_camera = None
         self._setup()
-        self.coin_collect_sound = arcade.load_sound(constants.COIN_COLLISION_SOUND)
         self.jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
 
         self.tile_map = None
@@ -121,6 +120,6 @@ class Game_View(arcade.View):
             self (Game_Window): An instance of the Game_Window object.
             delta_time (Time): An instance of time.
         """
-        self.collision_engine.execute(self.scene, self.coin_collect_sound)
+        self.collision_engine.execute(self.scene, self.cast)
         self.physics_engine.update()
         self.center_camera_to_player()

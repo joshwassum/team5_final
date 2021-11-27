@@ -15,10 +15,10 @@ class Marquee():
             self (Marquee): an instance of the Marquee object.
         """
 
-        self._text = None
+        self._number = None
 
 
-    def set_text(self, text):
+    def set_text(self, number):
         """Class setter, in charge of setting the text.
 
         Args:
@@ -26,7 +26,7 @@ class Marquee():
             text (String): String to set self._text to
         """
 
-        self._text = text
+        self._number = number
 
     def get_text(self): 
         """Class Getter, returns the self._text element.
@@ -34,4 +34,8 @@ class Marquee():
         Args:
             self (Marquee): an instance of Marquee.
         """
-        return self._text
+        return self._number
+    
+    def add_number(self):
+
+        self._number += 1

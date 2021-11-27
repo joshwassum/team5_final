@@ -1,7 +1,4 @@
 import arcade
-from game.game_view import Game_View
-from game.control_sprites_action import ControlSpritesAction
-from game.handle_collisions_action import HandleCollisionsAction
 from game.start_view import StartView
 
 
