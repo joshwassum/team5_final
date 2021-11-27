@@ -34,9 +34,6 @@ def main():
     tile_map = arcade.load_tilemap(constants.MAP_NAME, constants.TILE_SCALE, layer_options)
     scene = arcade.Scene.from_tilemap(tile_map)
 
-
-
-
     scene.add_sprite_list("Player")
     player_sprite = Sprites()
     player_sprite.set_image_source(":resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png")
