@@ -33,9 +33,9 @@ class HandleCrystalCollisionAction(Action):
         """
 
         crystal_collision_list = arcade.check_for_collision_with_list(player_location, Crystals)
-        death_sound = arcade.load_sound(constants.DEATH_SOUND)
+        crystal_collect_sound = arcade.load_sound(constants.COIN_COLLISION_SOUND)
 
         for crystal in crystal_collision_list:
             crystal.remove_from_sprite_lists()
-            arcade.play_sound(death_sound)
+            arcade.play_sound(crystal_collect_sound)
             crystals.add_number()
