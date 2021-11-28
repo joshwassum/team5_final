@@ -30,11 +30,14 @@ class ControlSpritesAction(Action):
 
     def _handle_movement(self, scene, key, physics_engine, jump_sound):
         if key == arcade.key.UP or key == arcade.key.W:
-            if physics_engine.can_jump():
+            if physics_engine.is_on_ladder():
+                scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
+            elif physics_engine.can_jump():
                 scene["Player"][0].change_y = constants.PLAYER_JUMP_SPEED
                 arcade.play_sound(jump_sound)
         elif key == arcade.key.DOWN or key == arcade.key.S:
-            scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
+            if physics_engine.is_on_ladder():
+                scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.LEFT or key == arcade.key.A:
             scene["Player"][0].change_x = -constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
