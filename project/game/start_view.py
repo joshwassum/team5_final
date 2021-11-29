@@ -27,8 +27,9 @@ class StartView(arcade.View):
     def on_draw(self):
         """ Draw this view """
         arcade.start_render()
-        arcade.draw_text("Instructions Screen", self.window.width / 2, self.window.height / 2,
-                        arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("The Heroic V", self.window.width / 2, self.window.height / 2 + 75, arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("Collect as many coins as possible while searching for the crystals. Present the crystals to the questioner and test your knowledge.", 
+                        self.window.width / 2, self.window.height / 2, arcade.color.WHITE, font_size=12, anchor_x="center")
         arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.WHITE, font_size=20, anchor_x="center")
     

@@ -18,7 +18,7 @@ PLAYER_JUMP_SPEED = 20
 COIN_COLLISION_SOUND = ":resources:sounds/coin1.wav"
 PLAYER_JUMP_SOUND = ":resources:sounds/phasejump1.wav"
 DEATH_SOUND = ":resources:sounds/gameover1.wav"
-MAP_NAME = "project/game/assests/map_sample.json"
+MAP_NAME = "project/game/assets/map_sample.json"
 
 LAYER_NAME_FOREGROUND = "Foreground"
 LAYER_NAME_PLATFORMS = "Platforms"
