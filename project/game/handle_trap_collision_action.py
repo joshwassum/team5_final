@@ -31,7 +31,6 @@ class HandleTrapCollisionAction(Action):
         traps_sound = arcade.load_sound(constants.DEATH_SOUND)
 
         if arcade.check_for_collision_with_list(player_location, traps):
-                  
             arcade.play_sound(traps_sound)
             lives.subtract_number()
             if lives == 0:

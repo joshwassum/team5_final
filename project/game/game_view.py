@@ -103,5 +103,7 @@ class Game_View(arcade.View):
         """
         for action in self.script["update"]:
             action.execute(self.scene, self.cast)
+        if self.cast["lives"].get_text() < 1:
+            exit()
         self.physics_engine.update()
         self.center_camera_to_player()
