@@ -17,7 +17,10 @@ class ControlSpritesAction(Action):
         """Executes the action using the given sprites.
 
         Args:
-            cast (dict): The game sprites {key: tag, value: list}.
+            scene (Scene): An instance of the Scene arcade object.
+            key (int): The key pressed by the user.
+            physics_engine (PhysicsEnginePlatformer): An instance of the PhysicsEnginePlatformer arcade object.
+            press (bool): A true or false value that indicates whether a button was pressed or released.
         """
         jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
 
@@ -26,9 +29,16 @@ class ControlSpritesAction(Action):
         else:
             self._handle_stop(scene, key)
 
-        
-
     def _handle_movement(self, scene, key, physics_engine, jump_sound):
+        """Handles the movements of the player character.
+        
+        Args:
+            self (ControlSpritesAction): An instance of ControlSpritesAction.
+            scene (Scene): An instance of the Scene object.
+            key (int): The key pressed by the user.
+            physics_engine (PhysicsEnginePlatformer): An instance of the PhysicsEnginePlatformer arcade object.
+            jump_sound (string): A string path that leads to the sound resource.
+        """
         if key == arcade.key.UP or key == arcade.key.W:
             if physics_engine.is_on_ladder():
                 scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
@@ -44,6 +54,13 @@ class ControlSpritesAction(Action):
             scene["Player"][0].change_x = constants.PLAYER_MOVEMENT_SPEED
 
     def _handle_stop(self, scene, key):
+        """Handles the stopping of the player character.
+        
+        Args:
+            self (ControlSpritesAction): An instance of ControlSpritesAction.
+            scene (Scene): An instance of the Scene object.
+            key (int): The key pressed by the user.
+        """
         if key == arcade.key.UP or key == arcade.key.W:
             scene["Player"][0].change_y = 0
         elif key == arcade.key.DOWN or key == arcade.key.S:
@@ -52,4 +69,3 @@ class ControlSpritesAction(Action):
             scene["Player"][0].change_x = 0
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             scene["Player"][0].change_x = 0
-
