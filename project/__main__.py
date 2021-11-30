@@ -7,6 +7,7 @@ from game.handle_coin_collision_action import HandleCoinCollisionAction
 from game.handle_death_collision_action import HandleDeathCollisionAction
 from game.handle_crystal_collision_action import HandleCrystalCollisionAction
 from game.handle_trap_collision_action import HandleTrapCollisionAction
+from game.handle_riddlemaster_collision_action import HandleRiddlemasterCollisionAction
 from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
 
@@ -99,7 +100,12 @@ def main():
     handle_coin_collision_action = HandleCoinCollisionAction()
     handle_crystal_collision_action = HandleCrystalCollisionAction()
     handle_trap_collision_action = HandleTrapCollisionAction()
-    script["update"] = [handle_coin_collision_action, handle_death_collision_action, handle_crystal_collision_action, handle_trap_collision_action]
+    handle_riddlemaster_collision_action = HandleRiddlemasterCollisionAction()
+    script["update"] = [handle_coin_collision_action, 
+                        handle_death_collision_action, 
+                        handle_crystal_collision_action, 
+                        handle_trap_collision_action,
+                        handle_riddlemaster_collision_action]
 
     # Initializing draw objects and storing it in script
     draw_cast_action = DrawCastAction()
