@@ -1,5 +1,4 @@
 import arcade
-from game.game_view import Game_View
 
 class GameOverView(arcade.View):
 
@@ -25,11 +24,11 @@ class GameOverView(arcade.View):
         arcade.start_render()
         arcade.draw_text("Game Over", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75,
-                        arcade.color.WHITE, font_size=20, anchor_x="center")
+        # arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75,
+        #                 arcade.color.WHITE, font_size=20, anchor_x="center")
 
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        """ If the user presses the mouse button, start the game. """
+    # def on_mouse_press(self, _x, _y, _button, _modifiers):
+    #     """ If the user presses the mouse button, start the game. """
 
-        game_view = Game_View(self.scene)
-        self.window.show_view(game_view)
+    #     game_view = Game_View(self.scene)
+    #     self.window.show_view(game_view)
