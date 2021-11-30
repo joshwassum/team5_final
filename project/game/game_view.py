@@ -1,4 +1,6 @@
 import arcade
+from game.riddlemaster_view import RiddleMasterView
+from game.game_over_view import GameOverView
 
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
@@ -103,6 +105,14 @@ class Game_View(arcade.View):
             delta_time (Time): An instance of time.
         """
         for action in self.script["update"]:
-            action.execute(self.scene, self.cast, self.props)
+            game_action = action.execute(self.scene, self.cast, self.props)
+            if game_action:
+                if self.cast["lives"].get_text() > 0:
+                    next_view = RiddleMasterView(self.scene, self.cast, self.script, self.props)
+                    self.window.show_view(next_view)
+                if self.cast["lives"].get_text() < 1:
+                    next_view = GameOverView(self.scene, self.cast, self.script, self.props)
+                    self.window(next_view)
+
         self.physics_engine.update()
         self.center_camera_to_player()
