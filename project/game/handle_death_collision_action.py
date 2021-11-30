@@ -32,10 +32,11 @@ class HandleDeathCollisionAction(Action):
         """
         death_sound = arcade.load_sound(constants.DEATH_SOUND)
 
+        death_count = lives.get_text()
         if player_location.center_y < -10:
             arcade.play_sound(death_sound)
             lives.subtract_number()
-            if lives == 0:
+            if death_count == 1:
                 sys.exit()
             else:
                 player_location.center_x = constants.START_LOCATION_X
