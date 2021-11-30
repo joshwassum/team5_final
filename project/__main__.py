@@ -122,7 +122,7 @@ def main():
     props = {}
 
     # Initializing game window
-    window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
+    props["window"] = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.TITLE)
 
     # Initializing physics engine and storing it in props
     physics_engine = arcade.PhysicsEnginePlatformer(
@@ -134,18 +134,18 @@ def main():
     props["physics_engine"] = physics_engine
     
     # Initializing camera and storing it in props
-    camera = arcade.Camera(window.width, window.height)
+    camera = arcade.Camera(props["window"].width, props["window"].height)
     props["camera"] = camera
     
     # Initializing gui camera and storing it in props
-    gui_camera = arcade.Camera(window.width, window.height)
+    gui_camera = arcade.Camera(props["window"].width, props["window"].height)
     props["gui_camera"] = gui_camera
 
 
 
     # Starts the game and passes key values to the view
     start_view = StartView(scene, cast, script, props)
-    window.show_view(start_view)
+    props["window"].show_view(start_view)
     arcade.run()
 
 if __name__ == "__main__":
