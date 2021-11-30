@@ -34,6 +34,7 @@ class Game_View(arcade.View):
         self.script = script
         self.scene = scene
         self.cast = cast
+        self.props = props
         self.camera = props["camera"]
         self.physics_engine = props["physics_engine"]
         self.gui_camera = props["gui_camera"]
@@ -102,6 +103,6 @@ class Game_View(arcade.View):
             delta_time (Time): An instance of time.
         """
         for action in self.script["update"]:
-            action.execute(self.scene, self.cast)
+            action.execute(self.scene, self.cast, self.props)
         self.physics_engine.update()
         self.center_camera_to_player()
