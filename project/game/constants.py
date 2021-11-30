@@ -32,4 +32,4 @@ LAYER_NAME_CRYSTALS = "Crystals"
 LAYER_NAME_TRAPS = "Traps"
 LAYER_NAME_RIDDLEMASTER = "Riddlemaster"
 
-RIDDLE = "TEST QUESTION"
+RIDDLE = "You've made it to the riddle master, now answer my question to proceed: \nI am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I?"

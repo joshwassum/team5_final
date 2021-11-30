@@ -2,7 +2,7 @@ import arcade
 
 class GameOverView(arcade.View):
 
-    def __init__(self, scene, cast, props):
+    def __init__(self, scene, cast, script, props):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object

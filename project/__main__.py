@@ -1,7 +1,7 @@
 import arcade
 from game.start_view import StartView
 from game.actor import Actor
-from game import constants, handle_crystal_collision_action, handle_trap_collision_action
+from game import constants
 from game.sprites import Sprites
 from game.handle_coin_collision_action import HandleCoinCollisionAction
 from game.handle_death_collision_action import HandleDeathCollisionAction

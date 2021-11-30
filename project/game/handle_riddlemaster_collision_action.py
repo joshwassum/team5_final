@@ -1,7 +1,6 @@
 import arcade
 from game.action import Action
 from game import constants
-from game.riddlemaster_view import RiddleMasterView
 
 class HandleRiddlemasterCollisionAction(Action):
     """A code template for handling death collisions. The responsibility of this class of objects is to update the game state when actors dies.

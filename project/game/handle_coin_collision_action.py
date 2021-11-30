@@ -1,7 +1,6 @@
 import arcade
 from game.action import Action
 from game import constants
-from game import game_view
 
 class HandleCoinCollisionAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
