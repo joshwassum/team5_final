@@ -78,7 +78,7 @@ class RiddleMasterView(arcade.View):
 
     def on_click_open(self, event):
         """Built in arcade function that allows us to perform some action when called."""
-        if self.text.text.upper() == "FIRE":
+        if self.text.text.upper().strip() == "FIRE":
             next_view = VictoryView(self.scene, self.cast,self.script, self.props)
             self.window.show_view(next_view)
         elif self.cast["lives"].get_text() > 0:
