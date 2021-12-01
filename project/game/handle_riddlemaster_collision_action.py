@@ -9,7 +9,7 @@ class HandleRiddlemasterCollisionAction(Action):
         Controller
     """
 
-    def execute(self, scene, cast):
+    def execute(self, scene, cast, props, script):
 
         """Executes the action using the given actors.
 

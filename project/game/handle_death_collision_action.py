@@ -10,7 +10,7 @@ class HandleDeathCollisionAction(Action):
         Controller
     """
 
-    def execute(self, scene, cast):
+    def execute(self, scene, cast, props, script):
 
         """Executes the action using the given actors.
 
@@ -42,7 +42,7 @@ class HandleDeathCollisionAction(Action):
             arcade.play_sound(death_sound)
             lives.subtract_number()
             if death_count < 2:
-                next_view = GameOverView(self.scene, self.cast, self.script, self.props)
+                next_view = GameOverView(self.scene, self.cast, self.props, self.script)
                 self.props["window"].show_view(next_view)
             else:
                 player_location.center_x = constants.START_LOCATION_X
