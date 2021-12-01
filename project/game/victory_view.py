@@ -6,7 +6,7 @@ class VictoryView(arcade.View):
     Stereotype:
         Controller
     """
-    def __init__(self):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object

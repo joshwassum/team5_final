@@ -21,7 +21,7 @@ class RiddleMasterView(arcade.View):
         v_box (UIBoxLayout): An instance of the arcade gui UIBoxLayout object
     """
 
-    def __init__(self, scene, cast):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object
@@ -32,6 +32,8 @@ class RiddleMasterView(arcade.View):
 
         self.scene = scene
         self.cast = cast
+        self.props = props
+        self.script = script
 
         #######################GUI elements#######################
         self.manager = arcade.gui.UIManager(auto_enable=True)

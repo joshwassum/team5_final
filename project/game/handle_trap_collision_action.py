@@ -10,7 +10,7 @@ class HandleTrapCollisionAction(Action):
         Controller
     """
 
-    def execute(self, scene, cast):
+    def execute(self, scene, cast, props, script):
 
         """Executes the action using the given actors.
 
@@ -43,7 +43,7 @@ class HandleTrapCollisionAction(Action):
             lives.subtract_number()
             lives_left = lives.get_text()
             if lives_left < 1:
-                next_view = GameOverView(self.scene, self.cast, self.script, self.props)
+                next_view = GameOverView(self.scene, self.cast, self.props, self.script)
                 self.props["window"].show_view(next_view)
             else:
                 player_location.center_x = constants.START_LOCATION_X

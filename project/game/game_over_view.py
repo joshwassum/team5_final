@@ -10,7 +10,7 @@ class GameOverView(arcade.View):
     Attributes:
         scene (Scene): An instance of the Scene object
     """
-    def __init__(self, scene):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object

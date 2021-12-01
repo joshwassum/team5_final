@@ -106,15 +106,12 @@ class Game_View(arcade.View):
         """
         for action in self.script["update"]:
 
-            game_action = action.execute(self.scene, self.cast)
+            game_action = action.execute(self.scene, self.cast, self.props, self.script)
 
             if game_action:
                 if self.cast["lives"].get_text() > 0:
-                    next_view = RiddleMasterView(self.scene)
+                    next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script)
                     self.window.show_view(next_view)
-                if self.cast["lives"].get_text() < 1:
-                    next_view = GameOverView(self.scene)
-                    self.window(next_view)
 
         self.physics_engine.update()
         self.center_camera_to_player()
