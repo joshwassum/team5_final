@@ -8,7 +8,9 @@ class HandleRiddlemasterCollisionAction(Action):
     Stereotype:
         Controller
     """
+
     def execute(self, scene, cast):
+
         """Executes the action using the given actors.
 
         Args:
@@ -22,7 +24,7 @@ class HandleRiddlemasterCollisionAction(Action):
 
         if crystal_count == 5:
             if arcade.check_for_collision_with_list(scene["Player"][0], scene["Riddlemaster"]):
-                    
+
                 arcade.play_sound(riddlemaster_sound)
                 return True
 

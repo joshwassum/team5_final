@@ -9,7 +9,9 @@ class HandleCoinCollisionAction(Action):
     Stereotype:
         Controller
     """
+
     def execute(self, scene, cast):
+
         """Executes the action using the given actors.
 
         Args:

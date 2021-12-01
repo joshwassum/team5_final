@@ -9,7 +9,9 @@ class HandleCrystalCollisionAction(Action):
         Controller
     """
 
+
     def execute(self, scene, cast):
+
         """Executes the action using the given actors.
 
         Args:
