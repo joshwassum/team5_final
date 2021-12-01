@@ -12,7 +12,7 @@ class HandleCrystalCollisionAction(Action):
         _tag (string): The action tag (input, update or output).
     """
 
-    def execute(self, scene, cast, props):
+    def execute(self, scene, cast, script, props):
         """Executes the action using the given actors.
 
         Args:

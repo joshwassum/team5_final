@@ -10,6 +10,7 @@ class GameOverView(arcade.View):
         """
         super().__init__()
         self.scene = scene
+        self.scene = props
 
     def on_show(self):
         """ This is run once when we switch to this view """

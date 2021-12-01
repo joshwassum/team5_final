@@ -20,7 +20,8 @@ PLAYER_JUMP_SOUND = ":resources:sounds/phasejump1.wav"
 DEATH_SOUND = ":resources:sounds/gameover1.wav"
 RIDDLEMASTER_SOUND = ":resources:sounds/upgrade3.wav"
 
-MAP_NAME = "project/game/assets/map_sample.json"
+LEVEL = 1
+MAP_NAME = f"project/game/assets/map_{LEVEL}.json"
 
 LAYER_NAME_FOREGROUND = "Foreground"
 LAYER_NAME_PLATFORMS = "Platforms"

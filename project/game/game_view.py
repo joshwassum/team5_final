@@ -105,7 +105,7 @@ class Game_View(arcade.View):
             delta_time (Time): An instance of time.
         """
         for action in self.script["update"]:
-            game_action = action.execute(self.scene, self.cast, self.props)
+            game_action = action.execute(self.scene, self.cast, self.script, self.props)
             if game_action:
                 if self.cast["lives"].get_text() > 0:
                     next_view = RiddleMasterView(self.scene, self.cast, self.script, self.props)

@@ -89,6 +89,8 @@ def main():
     crystals.set_text(0)
     cast["crystals"] = crystals
 
+    
+
 
 #########################Script Objects######################################  
 
