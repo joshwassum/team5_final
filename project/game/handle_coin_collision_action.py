@@ -3,20 +3,23 @@ from game.action import Action
 from game import constants
 
 class HandleCoinCollisionAction(Action):
-    """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
+    """A code template for handling collisions. The responsibility of this class of objects is to update 
+    the game state when the player collides with a coin.
 
     Stereotype:
         Controller
     """
-    def execute(self, scene, cast, script, props):
+
+    def execute(self, scene, cast):
+
         """Executes the action using the given actors.
 
         Args:
+            self (HandleRiddlemasterCollisionAction): An instance of the HandleRiddlemasterCollisionAction object.
+            scene (Scene): An instance of the Scene object.
             cast (dict): The game actors {key: tag, value: list}.
         """
 
-
-        # marquee = cast["marquee"][0]
         self._handle_coin_collisions(scene["Coins"], scene["Player"][0], cast["score"])
         
 

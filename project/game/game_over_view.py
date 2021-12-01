@@ -1,12 +1,19 @@
 import arcade
 
 class GameOverView(arcade.View):
+    """Creates our game over view and sets up the elements on screen. Uses the Window functions built into
+    arcade to track movement and camera setup.
 
-    def __init__(self, scene, cast, script, props):
+    Stereotype:
+        Controller
+
+    Attributes:
+        scene (Scene): An instance of the Scene object
+    """
+    def __init__(self, scene):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object
-            collision_engine (Handle_Collisions_Action): An instance of the Handle_Collisions_Action object.
         """
         super().__init__()
         self.scene = scene
