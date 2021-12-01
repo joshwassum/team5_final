@@ -7,7 +7,7 @@ class Game_View(arcade.View):
     arcade to track movement and camera setup.
 
     Stereotype:
-        Service Provider
+        Controller
 
     Attributes:
         script (dict): The game Actions {key: tag, value: Action}
@@ -105,13 +105,13 @@ class Game_View(arcade.View):
             delta_time (Time): An instance of time.
         """
         for action in self.script["update"]:
-            game_action = action.execute(self.scene, self.cast, self.props)
+            game_action = action.execute(self.scene, self.cast)
             if game_action:
                 if self.cast["lives"].get_text() > 0:
-                    next_view = RiddleMasterView(self.scene, self.cast, self.script, self.props)
+                    next_view = RiddleMasterView(self.scene)
                     self.window.show_view(next_view)
                 if self.cast["lives"].get_text() < 1:
-                    next_view = GameOverView(self.scene, self.cast, self.script, self.props)
+                    next_view = GameOverView(self.scene)
                     self.window(next_view)
 
         self.physics_engine.update()

@@ -9,10 +9,12 @@ class HandleTrapCollisionAction(Action):
     Stereotype:
         Controller
     """
-    def execute(self, scene, cast, props):
+    def execute(self, scene, cast):
         """Executes the action using the given actors.
 
         Args:
+            self (HandleRiddlemasterCollisionAction): An instance of the HandleRiddlemasterCollisionAction object.
+            scene (Scene): An instance of the Scene object.
             cast (dict): The game actors {key: tag, value: list}.
         """
 
