@@ -1,25 +1,23 @@
 import arcade
 
 class VictoryView(arcade.View):
+    """Creates our victory view and sets up the elements on screen. 
 
-    def __init__(self, scene, cast, script, props):
+    Stereotype:
+        Controller
+    """
+    def __init__(self):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object
             collision_engine (Handle_Collisions_Action): An instance of the Handle_Collisions_Action object.
         """
         super().__init__()
-        self.scene = scene
-        self.cast = cast
-        self.script = script
-        self.props = props
+
 
     def on_show(self):
         """ This is run once when we switch to this view """
         arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
-
-        # Reset the viewport, necessary if we have a scrolling game and we need
-        # to reset the viewport back to the start so we can see what we draw.
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_draw(self):

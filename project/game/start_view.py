@@ -2,6 +2,11 @@ import arcade
 from game.game_view import Game_View
 
 class StartView(arcade.View):
+    """Creates our start game view and sets up the elements on screen.
+
+    Stereotype:
+        Controller
+    """
 
     def __init__(self, scene, cast, script, props):
         """The class constructor
@@ -19,9 +24,6 @@ class StartView(arcade.View):
     def on_show(self):
         """ This is run once when we switch to this view """
         arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
-
-        # Reset the viewport, necessary if we have a scrolling game and we need
-        # to reset the viewport back to the start so we can see what we draw.
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_draw(self):

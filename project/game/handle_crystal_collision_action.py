@@ -7,17 +7,15 @@ class HandleCrystalCollisionAction(Action):
 
     Stereotype:
         Controller
-
-    Attributes:
-        _tag (string): The action tag (input, update or output).
     """
 
-    def execute(self, scene, cast, props):
+    def execute(self, scene, cast):
         """Executes the action using the given actors.
 
         Args:
-            cast (dict): The game actors {key: tag, value: list}.
+            self (HandleRiddlemasterCollisionAction): An instance of the HandleRiddlemasterCollisionAction object.
             scene (Scene): An instance of the Scene object.
+            cast (dict): The game actors {key: tag, value: list}.
         """
         self._handle_crystal_collisions(scene["Crystals"], scene["Player"][0], cast["crystals"])
 
