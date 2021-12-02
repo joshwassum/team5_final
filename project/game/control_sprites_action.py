@@ -31,7 +31,7 @@ class ControlSpritesAction(Action):
 
     def _handle_movement(self, scene, key, physics_engine, jump_sound):
         """Handles the movements of the player character.
-        
+
         Args:
             self (ControlSpritesAction): An instance of ControlSpritesAction.
             scene (Scene): An instance of the Scene object.
