@@ -31,7 +31,7 @@ class ControlSpritesAction(Action):
 
     def _handle_movement(self, scene, key, physics_engine, jump_sound):
         """Handles the movements of the player character.
-        
+
         Args:
             self (ControlSpritesAction): An instance of ControlSpritesAction.
             scene (Scene): An instance of the Scene object.
@@ -39,6 +39,9 @@ class ControlSpritesAction(Action):
             physics_engine (PhysicsEnginePlatformer): An instance of the PhysicsEnginePlatformer arcade object.
             jump_sound (string): A string path that leads to the sound resource.
         """
+
+        scene["Player"][0].change_x = 0
+
         if key == arcade.key.UP or key == arcade.key.W:
             if physics_engine.is_on_ladder():
                 scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
