@@ -51,7 +51,7 @@ class RiddleMasterView(arcade.View):
                 padding=(10, 10, 10, 10)
             )
         )
-        self.text = arcade.gui.UIInputText(x=500, y=400, width=200, height=50, text="Type Here", text_color=(0,0,0,255))
+        self.text = arcade.gui.UIInputText(x=500, y=400, width=200, height=50, text=" ", text_color=(0,0,0,255))
         self.manager.add(
             arcade.gui.UITexturePane(
                 self.text,
@@ -78,13 +78,13 @@ class RiddleMasterView(arcade.View):
 
     def on_click_open(self, event):
         """Built in arcade function that allows us to perform some action when called."""
-        if self.text.text.upper() == "FIRE":
+        if self.text.text.upper().strip() == "FIRE":
             next_view = VictoryView(self.scene, self.cast,self.script, self.props)
             self.window.show_view(next_view)
-        elif self.cast["lives"].get_text() > 0:
+        if self.cast["lives"].get_text() > 0:
             self.cast["lives"].subtract_number()
             self.text.text = "Try again!"
-        elif self.cast["lives"].get_text() < 1:
+        if self.cast["lives"].get_text() < 1:
             next_view = GameOverView(self.scene, self.cast,self.script, self.props)
             self.window.show_view(next_view)
 
