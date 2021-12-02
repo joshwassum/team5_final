@@ -1,6 +1,8 @@
 import arcade
+from arcade.key import ASTERISK
 from game.riddlemaster_view import RiddleMasterView
 from game.game_over_view import GameOverView
+from game import constants
 
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
@@ -43,6 +45,12 @@ class Game_View(arcade.View):
         self.end_of_map = 0
         self.level = 1
 
+        # Track the current state of what key is pressed
+        self.left_pressed = False
+        self.right_pressed = False
+        self.up_pressed = False
+        self.down_pressed = False
+
     def on_draw(self):
         """Renders the screen.
 
@@ -67,16 +75,38 @@ class Game_View(arcade.View):
         Args:
             self (Game_Window): An instance of the Game_Window object.
         """
-        press = True
-        self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
+        # press = True
+        # if key == arcade.key.LEFT and key == arcade.key.RIGHT:
+        #     press = False
+        # self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
+
+        if key == arcade.key.UP:
+            self.up_pressed = True
+        elif key == arcade.key.DOWN:
+            self.down_pressed = True
+        elif key == arcade.key.LEFT:
+            self.left_pressed = True
+        elif key == arcade.key.RIGHT:
+            self.right_pressed = True
 
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key.
         Args:
             self (Game_View): An instance of Game_View.
         """
-        press = False
-        self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
+        # press = False
+        # if key == arcade.key.LEFT or key == arcade.key.RIGHT:
+        #     press = True
+        # self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
+
+        if key == arcade.key.UP:
+            self.up_pressed = False
+        elif key == arcade.key.DOWN:
+            self.down_pressed = False
+        elif key == arcade.key.LEFT:
+            self.left_pressed = False
+        elif key == arcade.key.RIGHT:
+            self.right_pressed = False
 
 
     def center_camera_to_player(self):
@@ -112,6 +142,18 @@ class Game_View(arcade.View):
                 if self.cast["lives"].get_text() > 0:
                     next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script)
                     self.window.show_view(next_view)
+            
+            self.scene["Player"][0].change_x = 0
+            self.scene["Player"][0].change_y = 0
+
+            if self.up_pressed and not self.down_pressed:
+                self.scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
+            elif self.down_pressed and not self.up_pressed:
+                self.scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
+            if self.left_pressed and not self.right_pressed:
+                self.scene["Player"][0].change_x = -constants.PLAYER_MOVEMENT_SPEED
+            elif self.right_pressed and not self.left_pressed:
+                self.scene["Player"][0].change_x = constants.PLAYER_MOVEMENT_SPEED
 
         self.physics_engine.update()
         self.center_camera_to_player()
