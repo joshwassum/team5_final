@@ -37,7 +37,7 @@ def main():
             "use_spatial_hash": True,
             },
         constants.LAYER_NAME_PLAYER: {
-            "use_spatial_hash": True,
+            "use_spatial_hash": False,
             },
         constants.LAYER_NAME_TRAPS: {
             "use_spatial_hash": True,
