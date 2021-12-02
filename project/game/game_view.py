@@ -143,17 +143,16 @@ class Game_View(arcade.View):
                     next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script)
                     self.window.show_view(next_view)
             
-            # self.scene["Player"][0].change_x = 0
-            # self.scene["Player"][0].change_y = 0
+            self.scene["Player"][0].change_x = 0
 
             if self.up_pressed and not self.down_pressed:
-                self.scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
+                self.script["movement"][0].execute(self.scene, arcade.key.UP, self.physics_engine, self.up_pressed)
             elif self.down_pressed and not self.up_pressed:
-                self.scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
+                self.script["movement"][0].execute(self.scene, arcade.key.DOWN, self.physics_engine, self.down_pressed)
             if self.left_pressed and not self.right_pressed:
-                self.scene["Player"][0].change_x = -constants.PLAYER_MOVEMENT_SPEED
+                self.script["movement"][0].execute(self.scene, arcade.key.LEFT, self.physics_engine, self.left_pressed)
             elif self.right_pressed and not self.left_pressed:
-                self.scene["Player"][0].change_x = constants.PLAYER_MOVEMENT_SPEED
+                self.script["movement"][0].execute(self.scene, arcade.key.RIGHT, self.physics_engine, self.right_pressed)
 
         self.physics_engine.update()
         self.center_camera_to_player()
