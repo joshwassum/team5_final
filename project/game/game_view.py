@@ -143,8 +143,8 @@ class Game_View(arcade.View):
                     next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script)
                     self.window.show_view(next_view)
             
-            self.scene["Player"][0].change_x = 0
-            self.scene["Player"][0].change_y = 0
+            # self.scene["Player"][0].change_x = 0
+            # self.scene["Player"][0].change_y = 0
 
             if self.up_pressed and not self.down_pressed:
                 self.scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
