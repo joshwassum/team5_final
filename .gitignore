@@ -1,1 +1,13 @@
 /project/game/__pycache__
+project/game/__pycache__/__init__.cpython-39.pyc
+project/game/__pycache__/action.cpython-39.pyc
+project/game/__pycache__/actor.cpython-39.pyc
+project/game/__pycache__/constants.cpython-39.pyc
+project/game/__pycache__/control_sprites_action.cpython-39.pyc
+project/game/__pycache__/draw_cast_action.cpython-39.pyc
+project/game/__pycache__/handle_death_collision_action.cpython-39.pyc
+project/game/__pycache__/handle_riddlemaster_collision_action.cpython-39.pyc
+project/game/__pycache__/handle_trap_collision_action.cpython-39.pyc
+project/game/__pycache__/sprites.cpython-39.pyc
+project/game/__pycache__/start_view.cpython-39.pyc
+project/game/__pycache__/handle_coin_collision_action.cpython-39.pyc
