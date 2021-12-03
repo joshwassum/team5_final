@@ -23,6 +23,9 @@ RIDDLEMASTER_SOUND = ":resources:sounds/upgrade3.wav"
 LEVEL = 1
 MAP_NAME = f"project/game/assets/map_{LEVEL}.json"
 
+RIGHT_FACING = 0
+LEFT_FACING = 1
+
 LAYER_NAME_FOREGROUND = "Foreground"
 LAYER_NAME_PLATFORMS = "Platforms"
 LAYER_NAME_COINS = "Coins"

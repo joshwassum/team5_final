@@ -10,6 +10,7 @@ from game.handle_trap_collision_action import HandleTrapCollisionAction
 from game.handle_riddlemaster_collision_action import HandleRiddlemasterCollisionAction
 from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
+from game.animated_sprites import SpriteAnimation
 
 def main():
     """main activates the game and its various functions by gathering the various componenets of the app.
@@ -103,11 +104,14 @@ def main():
     handle_crystal_collision_action = HandleCrystalCollisionAction()
     handle_trap_collision_action = HandleTrapCollisionAction()
     handle_riddlemaster_collision_action = HandleRiddlemasterCollisionAction()
+    animated_sprites = SpriteAnimation()
     script["update"] = [handle_coin_collision_action, 
                         handle_death_collision_action, 
                         handle_crystal_collision_action, 
                         handle_trap_collision_action,
-                        handle_riddlemaster_collision_action]
+                        handle_riddlemaster_collision_action,
+                        animated_sprites
+                        ]
 
     # Initializing draw objects and storing it in script
     draw_cast_action = DrawCastAction()
@@ -116,6 +120,8 @@ def main():
     # Initializing movement objects and storing it in script
     control_sprites_action = ControlSpritesAction()
     script["movement"] = [control_sprites_action]
+
+
 
 
 #########################Prop Objects######################################
