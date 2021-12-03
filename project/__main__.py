@@ -2,7 +2,6 @@ import arcade
 from game.start_view import StartView
 from game.actor import Actor
 from game import constants
-from game.sprites import Sprites
 from game.handle_coin_collision_action import HandleCoinCollisionAction
 from game.handle_death_collision_action import HandleDeathCollisionAction
 from game.handle_crystal_collision_action import HandleCrystalCollisionAction
@@ -61,12 +60,10 @@ def main():
     scene.add_sprite_list("Player")
 
     # Initializes the player sprite and assigns attirbutes to it. Then stores it in the scene object
-    player_sprite = Sprites()
-    player_sprite.set_image_source(":resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png")
-    player_sprite.set_sprite(arcade.Sprite(player_sprite.get_image_source(), constants.CHARACTER_SCALE))
-    player_sprite.get_sprite().center_x = constants.START_LOCATION_X
-    player_sprite.get_sprite().center_y = constants.START_LOCATION_Y
-    scene.add_sprite("Player", player_sprite.get_sprite())
+    player_sprite = arcade.Sprite(":resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png", constants.CHARACTER_SCALE)
+    player_sprite.center_x = constants.START_LOCATION_X
+    player_sprite.center_y = constants.START_LOCATION_Y
+    scene.add_sprite("Player", player_sprite)
 
 
 #########################Cast Objects######################################
