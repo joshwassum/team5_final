@@ -4,6 +4,7 @@ from game.riddlemaster_view import RiddleMasterView
 from game.game_over_view import GameOverView
 from game import constants
 
+
 class Game_View(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
     arcade to track movement and camera setup.
@@ -136,7 +137,7 @@ class Game_View(arcade.View):
         """
         for action in self.script["update"]:
 
-            game_action = action.execute(self.scene, self.cast, self.props, self.script)
+            game_action = action.execute(self.scene, self.cast, self.props, self.script, delta_time)
 
             if game_action:
                 if self.cast["lives"].get_text() > 0:
