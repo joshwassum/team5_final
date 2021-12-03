@@ -1,4 +1,5 @@
 import arcade
+import arcade.gui
 from game.game_view import Game_View
 
 class StartView(arcade.View):
@@ -21,22 +22,40 @@ class StartView(arcade.View):
         self.script = script
         self.props = props
 
-    def on_show(self):
-        """ This is run once when we switch to this view """
-        arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
-        arcade.set_viewport(0, self.window.width, 0, self.window.height)
+        self.manager = arcade.gui.UIManager()
+        self.manager.enable()
 
-    def on_draw(self):
-        """ Draw this view """
-        arcade.start_render()
-        arcade.draw_text("The Heroic V", self.window.width / 2, self.window.height / 2 + 75, arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Collect as many coins as possible while searching for the crystals. Present the crystals to the questioner and test your knowledge.", 
-                        self.window.width / 2, self.window.height / 2, arcade.color.WHITE, font_size=12, anchor_x="center")
-        arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75,
-                        arcade.color.WHITE, font_size=20, anchor_x="center")
-    
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        """ If the user presses the mouse button, start the game. """
-        
+        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+
+        self.v_box = arcade.gui.UIBoxLayout()
+
+        start_button = arcade.gui.UIFlatButton(text="Start Game", width=200)
+        self.v_box.add(start_button.with_space_around(bottom=20))
+
+        instruction_button = arcade.gui.UIFlatButton(text="Instructions", width=200)
+        self.v_box.add(instruction_button.with_space_around(bottom=20))
+
+        start_button.on_click = self.on_click_start
+
+        instruction_button.on_click = self.on_click_instruction
+
+        self.manager.add(
+            arcade.gui.UIAnchorWidget(
+                anchor_x="center_x",
+                anchor_y="center_y",
+                child=self.v_box)
+        )
+
+
+    def on_click_start(self, event):
         game_view = Game_View(self.scene, self.cast, self.script, self.props)
         self.window.show_view(game_view)
+
+    def on_click_instruction(self, event):
+        print("Intruction:", event)
+
+    def on_draw(self):
+        arcade.start_render()
+        self.manager.draw()
+        arcade.draw_text("The Heroic V", self.window.width / 2, self.window.height / 2 + 150,
+                        arcade.color.WHITE, font_size=50, anchor_x="center")
