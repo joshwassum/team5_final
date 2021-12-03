@@ -80,14 +80,14 @@ class Game_View(arcade.View):
             press = False
         self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
 
-        # if key == arcade.key.UP:
-        #     self.up_pressed = True
-        # elif key == arcade.key.DOWN:
-        #     self.down_pressed = True
-        # elif key == arcade.key.LEFT:
-        #     self.left_pressed = True
-        # elif key == arcade.key.RIGHT:
-        #     self.right_pressed = True
+        if key == arcade.key.UP:
+            self.up_pressed = True
+        elif key == arcade.key.DOWN:
+            self.down_pressed = True
+        elif key == arcade.key.LEFT:
+            self.left_pressed = True
+        elif key == arcade.key.RIGHT:
+            self.right_pressed = True
 
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key.
@@ -99,14 +99,14 @@ class Game_View(arcade.View):
             press = True
         self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
 
-        # if key == arcade.key.UP:
-        #     self.up_pressed = False
-        # elif key == arcade.key.DOWN:
-        #     self.down_pressed = False
-        # elif key == arcade.key.LEFT:
-        #     self.left_pressed = False
-        # elif key == arcade.key.RIGHT:
-        #     self.right_pressed = False
+        if key == arcade.key.UP:
+            self.up_pressed = False
+        elif key == arcade.key.DOWN:
+            self.down_pressed = False
+        elif key == arcade.key.LEFT:
+            self.left_pressed = False
+        elif key == arcade.key.RIGHT:
+            self.right_pressed = False
 
 
     def center_camera_to_player(self):
@@ -143,16 +143,16 @@ class Game_View(arcade.View):
                     next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script)
                     self.window.show_view(next_view)
 
-            # self.scene["Player"][0].change_x = 0
+            self.scene["Player"][0].change_x = 0
 
-            # if self.up_pressed and not self.down_pressed:
-            #     self.script["movement"][0].execute(self.scene, arcade.key.UP, self.physics_engine, self.up_pressed)
-            # elif self.down_pressed and not self.up_pressed:
-            #     self.script["movement"][0].execute(self.scene, arcade.key.DOWN, self.physics_engine, self.down_pressed)
-            # if self.left_pressed and not self.right_pressed:
-            #     self.script["movement"][0].execute(self.scene, arcade.key.LEFT, self.physics_engine, self.left_pressed)
-            # elif self.right_pressed and not self.left_pressed:
-            #     self.script["movement"][0].execute(self.scene, arcade.key.RIGHT, self.physics_engine, self.right_pressed)
+            if self.up_pressed and not self.down_pressed:
+                self.script["movement"][0].execute(self.scene, arcade.key.UP, self.physics_engine, self.up_pressed)
+            elif self.down_pressed and not self.up_pressed:
+                self.script["movement"][0].execute(self.scene, arcade.key.DOWN, self.physics_engine, self.down_pressed)
+            if self.left_pressed and not self.right_pressed:
+                self.script["movement"][0].execute(self.scene, arcade.key.LEFT, self.physics_engine, self.left_pressed)
+            elif self.right_pressed and not self.left_pressed:
+                self.script["movement"][0].execute(self.scene, arcade.key.RIGHT, self.physics_engine, self.right_pressed)
 
         self.physics_engine.update()
         self.center_camera_to_player()
