@@ -40,7 +40,7 @@ class ControlSpritesAction(Action):
             jump_sound (string): A string path that leads to the sound resource.
         """
 
-        scene["Player"][0].change_x = 0
+        # scene["Player"][0].change_x = 0
 
         if key == arcade.key.UP or key == arcade.key.W:
             if physics_engine.is_on_ladder():

@@ -34,19 +34,26 @@ class RiddleMasterView(arcade.View):
         self.cast = cast
         self.props = props
         self.script = script
+        self.riddle = ""
+        self.answer = ""
+        self.iter = 0
+        for key,value in constants.RIDDLE[self.iter].items():
+            self.riddle = key
+            self.answer = value
+
 
         #######################GUI elements#######################
         self.manager = arcade.gui.UIManager(auto_enable=True)
         bg_tex = arcade.load_texture(":resources:gui_basic_assets/window/grey_panel.png")
-        text_area = arcade.gui.UITextArea(x=100,
+        self.text_area = arcade.gui.UITextArea(x=100,
                             y=200,
                             width=200,
                             height=300,
-                            text=constants.RIDDLE,
+                            text=self.riddle,
                             text_color=(0, 0, 0, 255))
         self.manager.add(
             arcade.gui.UITexturePane(
-                text_area.with_space_around(right=20),
+                self.text_area.with_space_around(right=20),
                 tex=bg_tex,
                 padding=(10, 10, 10, 10)
             )
@@ -78,14 +85,22 @@ class RiddleMasterView(arcade.View):
 
     def on_click_open(self, event):
         """Built in arcade function that allows us to perform some action when called."""
-        if self.text.text.upper().strip() == "FIRE":
+        if self.iter < 5:
+            if self.answer == self.text.text.upper().strip():
+                self.iter += 1
+                for key,value in constants.RIDDLE[self.iter].items():
+                    self.riddle = key
+                    self.answer = value
+                self.text_area.text = self.riddle
+                self.text.text = ""
+            elif self.cast["lives"].get_text() > 0:
+                self.cast["lives"].subtract_number()
+                self.text.text = "Try again!"
+            if self.cast["lives"].get_text() < 1:
+                next_view = GameOverView(self.scene, self.cast,self.script, self.props)
+                self.window.show_view(next_view)
+        else:
             next_view = VictoryView(self.scene, self.cast,self.script, self.props)
-            self.window.show_view(next_view)
-        if self.cast["lives"].get_text() > 0:
-            self.cast["lives"].subtract_number()
-            self.text.text = "Try again!"
-        if self.cast["lives"].get_text() < 1:
-            next_view = GameOverView(self.scene, self.cast,self.script, self.props)
             self.window.show_view(next_view)
 
 
