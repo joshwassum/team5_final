@@ -21,7 +21,7 @@ class RiddleMasterView(arcade.View):
         v_box (UIBoxLayout): An instance of the arcade gui UIBoxLayout object
     """
 
-    def __init__(self, scene, cast, props, script):
+    def __init__(self, scene, cast, props, script, level):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object
@@ -37,7 +37,8 @@ class RiddleMasterView(arcade.View):
         self.riddle = ""
         self.answer = ""
         self.iter = 0
-        for key,value in constants.RIDDLE[self.iter].items():
+        self.level = level
+        for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():
             self.riddle = key
             self.answer = value
 
@@ -66,7 +67,7 @@ class RiddleMasterView(arcade.View):
                 padding=(10, 10, 10, 10)
             ))
         self.v_box = arcade.gui.UIBoxLayout()
-        test_answer = arcade.gui.UIFlatButton(text="Submit", width=200)
+        test_answer = arcade.gui.UIFlatButton(text="OK", width=200)
         self.v_box.add(test_answer)
         test_answer.on_click = self.on_click_open
         self.manager.add(
@@ -85,10 +86,10 @@ class RiddleMasterView(arcade.View):
 
     def on_click_open(self, event):
         """Built in arcade function that allows us to perform some action when called."""
-        if self.iter < 5:
+        if self.iter < len(constants.RIDDLE_MASTER_SCRIPT[self.level - 1]):
             if self.answer == self.text.text.upper().strip():
                 self.iter += 1
-                for key,value in constants.RIDDLE[self.iter].items():
+                for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():
                     self.riddle = key
                     self.answer = value
                 self.text_area.text = self.riddle
