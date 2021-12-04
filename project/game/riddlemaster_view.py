@@ -77,14 +77,20 @@ class RiddlemasterView(arcade.View):
         )
 
     def on_draw(self):
-        """ In charge of drawing the elements on screen. """
+        """ In charge of drawing the elements on screen.
+        Args:
+        self (riddlemaster_view): An instance of the riddlemaster_view 
+        """
         arcade.start_render()
         self.manager.draw()
         for action in self.script["draw"]:
             action.execute(self.cast)
 
     def on_click_open(self, event):
-        """Built in arcade function that allows us to perform some action when called."""
+        """Built in arcade function that allows us to perform some action when called.
+        Args:
+        self (riddlemaster_view): An instance of the riddlemaster_view
+        """
         if self.iter < len(constants.RIDDLE_MASTER_SCRIPT[self.level - 1]):
             if self.answer == self.text.text.upper().strip():
                 self.iter += 1

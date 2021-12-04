@@ -16,12 +16,18 @@ class VictoryView(arcade.View):
 
 
     def on_show(self):
-        """ This is run once when we switch to this view """
+        """ This is run once when we switch to this view 
+        Args:
+            scene (Scene): An instance of the Scene object
+            """
         arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_draw(self):
-        """ Draw this view """
+        """ Draw this view
+        Args:
+            scene (Scene): An instance of the Scene object
+             """
         arcade.start_render()
         arcade.draw_text("Congratulations", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
