@@ -7,7 +7,6 @@ from game.handle_crystal_collision_action import HandleCrystalCollisionAction
 from game.handle_trap_collision_action import HandleTrapCollisionAction
 from game.handle_riddlemaster_collision_action import HandleRiddlemasterCollisionAction
 from game.view_transition_action import ViewTransitionAction
-from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
 from game.sprite_animation_action import SpriteAnimationAction
 from game.player_sprite_animation import PlayerSpriteAnimation
@@ -58,7 +57,7 @@ def main():
     tile_map = arcade.load_tilemap(constants.MAP_NAME, constants.TILE_SCALE, layer_options)
     scene = arcade.Scene.from_tilemap(tile_map)
 
-
+    scene.add_sprite_list_before("Player", constants.LAYER_NAME_FOREGROUND)
     # Initializes the player sprite and assigns attirbutes to it. Then stores it in the scene object
     player_sprite = PlayerSpriteAnimation()
     player_sprite.center_x = constants.START_LOCATION_X
@@ -117,10 +116,6 @@ def main():
     # Initializing draw objects and storing it in script
     draw_cast_action = DrawCastAction()
     script["draw"] = [draw_cast_action]
-    
-    # Initializing movement objects and storing it in script
-    control_sprites_action = ControlSpritesAction()
-    script["movement"] = [control_sprites_action]
 
     # Initializing the view transition object and storing it in script
     view_transition_action = ViewTransitionAction()

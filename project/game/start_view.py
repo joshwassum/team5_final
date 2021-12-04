@@ -8,7 +8,7 @@ class StartView(arcade.View):
         Controller
     """
 
-    def __init__(self, scene, cast, script, props):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
 
         Args:

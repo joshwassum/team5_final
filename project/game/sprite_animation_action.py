@@ -1,6 +1,5 @@
 import arcade
 from game.action import Action
-from game import constants
 
 
 class SpriteAnimationAction(Action):

@@ -2,6 +2,8 @@ from game.action import Action
 from game.start_view import StartView
 from game.game_view import GameView
 from game.riddlemaster_view import RiddlemasterView
+from game.victory_view import VictoryView
+from game.game_over_view import GameOverView
 
 class ViewTransitionAction(Action):
     """A code template for a thing done in a game. The responsibility of
@@ -21,20 +23,32 @@ class ViewTransitionAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         if view == 'start':
-            self.start_view(scene, cast, props, script)
+            self._start_view(scene, cast, props, script)
         elif view == 'game':
-            self.game_view(scene, cast, props, script)
+            self._game_view(scene, cast, props, script)
         elif view == 'riddle':
-            self.riddlemaster_view(scene, cast, props, script)
+            self._riddlemaster_view(scene, cast, props, script)
+        elif view == 'game_over':
+            self._game_over_view(cast, props, script)
+        elif view == 'victory':
+            self._victory_view(cast, props, script)
 
-    def start_view(self, scene, cast, props, script):
-        view = StartView(scene, cast, script, props)
+    def _start_view(self, scene, cast, props, script):
+        view = StartView(scene, cast, props, script)
         props["window"].show_view(view)
 
-    def game_view(self, scene, cast, props, script):
-        view = GameView(scene, cast, script, props)
+    def _game_view(self, scene, cast, props, script):
+        view = GameView(scene, cast, props, script)
         props["window"].show_view(view)
 
-    def riddlemaster_view(self, scene, cast, props, script):
+    def _riddlemaster_view(self, scene, cast, props, script):
         view = RiddlemasterView(scene, cast, props, script)
+        props["window"].show_view(view)
+
+    def _game_over_view(self, cast, props, script):
+        view = GameOverView(cast, props, script)
+        props["window"].show_view(view)
+
+    def _victory_view(self, cast, props, script):
+        view = VictoryView(cast, props, script)
         props["window"].show_view(view)

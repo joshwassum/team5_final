@@ -1,7 +1,6 @@
 import arcade
 from game.action import Action
 from game import constants
-from game.game_over_view import GameOverView
 
 class HandleDeathCollisionAction(Action):
     """A code template for handling death collisions. The responsibility of this class of objects is to update the game state when actors dies.
@@ -42,8 +41,7 @@ class HandleDeathCollisionAction(Action):
             arcade.play_sound(death_sound)
             lives.subtract_number()
             if death_count < 2:
-                next_view = GameOverView(self.scene, self.cast, self.props, self.script)
-                self.props["window"].show_view(next_view)
+                self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
             else:
                 player_location.center_x = constants.START_LOCATION_X
                 player_location.center_y = constants.START_LOCATION_Y
