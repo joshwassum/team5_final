@@ -104,7 +104,7 @@ class PlayerSpriteAnimation(arcade.Sprite):
             if self.current_texture > 7:
                 self.currrent_texture = 0
         if self.climbing:
-            self.texture = self.climbing_textures[self.cur_texture // 4]
+            self.texture = self.climbing_textures[self.current_texture // 4]
             return
 
         # Jumping animation
