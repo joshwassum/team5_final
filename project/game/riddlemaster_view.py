@@ -1,4 +1,3 @@
-from typing import cast
 import arcade
 import arcade.gui
 from game.victory_view import VictoryView
@@ -6,7 +5,7 @@ from game.game_over_view import GameOverView
 from game import constants
 
 
-class RiddleMasterView(arcade.View):
+class RiddlemasterView(arcade.View):
     """Creates our riddle master screen and sets up the elements on screen. Uses the the Arcade gui to accept
     and output user information.
 
@@ -21,7 +20,7 @@ class RiddleMasterView(arcade.View):
         v_box (UIBoxLayout): An instance of the arcade gui UIBoxLayout object
     """
 
-    def __init__(self, scene, cast, props, script, level):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
         Args:
             scene (Scene): An instance of the Scene object
@@ -36,8 +35,8 @@ class RiddleMasterView(arcade.View):
         self.script = script
         self.riddle = ""
         self.answer = ""
+        self.level = self.cast["level"]
         self.iter = 0
-        self.level = level
         for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():
             self.riddle = key
             self.answer = value

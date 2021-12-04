@@ -1,5 +1,4 @@
 import arcade
-from game.start_view import StartView
 from game.actor import Actor
 from game import constants
 from game.handle_coin_collision_action import HandleCoinCollisionAction
@@ -7,6 +6,7 @@ from game.handle_death_collision_action import HandleDeathCollisionAction
 from game.handle_crystal_collision_action import HandleCrystalCollisionAction
 from game.handle_trap_collision_action import HandleTrapCollisionAction
 from game.handle_riddlemaster_collision_action import HandleRiddlemasterCollisionAction
+from game.view_transition_action import ViewTransitionAction
 from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
 from game.animated_sprites import SpriteAnimation
@@ -89,6 +89,15 @@ def main():
     cast["crystals"] = crystals
 
 
+    # Initializing an Actor object and saves it as level in cast
+    level = Actor()
+    level.set_text(1)
+    cast["level"] = level
+
+    
+
+
+
 #########################Script Objects######################################  
 
     # Initializing script dictionary
@@ -117,6 +126,9 @@ def main():
     control_sprites_action = ControlSpritesAction()
     script["movement"] = [control_sprites_action]
 
+    # Initializing the view transition object and storing it in script
+    view_transition_action = ViewTransitionAction()
+    script["view"] = view_transition_action
 
 
 
@@ -145,11 +157,8 @@ def main():
     gui_camera = arcade.Camera(props["window"].width, props["window"].height)
     props["gui_camera"] = gui_camera
 
-
-
     # Starts the game and passes key values to the view
-    start_view = StartView(scene, cast, script, props)
-    props["window"].show_view(start_view)
+    script["view"].execute(scene, cast, props, script, "start")
     arcade.run()
 
 if __name__ == "__main__":
