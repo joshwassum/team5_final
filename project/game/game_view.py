@@ -141,7 +141,7 @@ class Game_View(arcade.View):
 
             if game_action:
                 if self.cast["lives"].get_text() > 0:
-                    next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script)
+                    next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script, self.level)
                     self.window.show_view(next_view)
 
             self.scene["Player"][0].change_x = 0
