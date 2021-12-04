@@ -21,7 +21,10 @@ class ControlSpritesAction(Action):
             key (int): The key pressed by the user.
             physics_engine (PhysicsEnginePlatformer): An instance of the PhysicsEnginePlatformer arcade object.
             press (bool): A true or false value that indicates whether a button was pressed or released.
+
         """
+
+        
         jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
 
         if press:

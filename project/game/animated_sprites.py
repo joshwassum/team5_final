@@ -22,4 +22,4 @@ class SpriteAnimation(Action):
         """
 
         self.scene = scene
-        arcade.Scene.update_animation(self.scene, delta_time)
+        arcade.Scene.update_animation(self.scene, delta_time) 

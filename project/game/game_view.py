@@ -1,5 +1,4 @@
 import arcade
-from game.riddlemaster_view import RiddleMasterView
 
 
 class GameView(arcade.View):
