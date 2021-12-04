@@ -1,3 +1,4 @@
+from typing import DefaultDict
 from arcade.key import L
 
 
@@ -19,6 +20,8 @@ COIN_COLLISION_SOUND = ":resources:sounds/coin1.wav"
 PLAYER_JUMP_SOUND = ":resources:sounds/phasejump1.wav"
 DEATH_SOUND = ":resources:sounds/gameover1.wav"
 RIDDLEMASTER_SOUND = ":resources:sounds/upgrade3.wav"
+
+MAIN_FILE = ":resources:images/animated_characters/female_adventurer/femaleAdventurer"
 
 LEVEL = 1
 MAP_NAME = f"project/game/assets/map_{LEVEL}.json"
