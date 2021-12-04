@@ -41,7 +41,7 @@ class GameView(arcade.View):
         self.gui_camera = props["gui_camera"]
         self.end_of_map = 0
 
-        # Track the current state of what key is pressed
+        # Track the current state of what key/keys is pressed
         self.left_pressed = False
         self.right_pressed = False
         self.up_pressed = False
@@ -165,18 +165,6 @@ class GameView(arcade.View):
                 if self.cast["lives"].get_text() > 0:
                     self.script["view"].execute(self.scene, self.cast, self.props, self.script, "riddle")
 
-            self.scene["Player"][0].change_x = 0
-
-            if self.up_pressed and not self.down_pressed:
-                self.script["movement"][0].execute(self.scene, arcade.key.UP, self.physics_engine, self.up_pressed)
-                if not self.physics_engine.is_on_ladder():
-                    self.up_pressed = False
-            elif self.down_pressed and not self.up_pressed:
-                self.script["movement"][0].execute(self.scene, arcade.key.DOWN, self.physics_engine, self.down_pressed)
-            if self.left_pressed and not self.right_pressed:
-                self.script["movement"][0].execute(self.scene, arcade.key.LEFT, self.physics_engine, self.left_pressed)
-            elif self.right_pressed and not self.left_pressed:
-                self.script["movement"][0].execute(self.scene, arcade.key.RIGHT, self.physics_engine, self.right_pressed)
 
         self.physics_engine.update()
 
