@@ -9,8 +9,8 @@ from game.handle_riddlemaster_collision_action import HandleRiddlemasterCollisio
 from game.view_transition_action import ViewTransitionAction
 from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
-from game.animated_sprites import SpriteAnimation
-from game.player_animation import PlayerSpriteAnimation
+from game.sprite_animation_action import SpriteAnimationAction
+from game.player_sprite_animation import PlayerSpriteAnimation
 
 def main():
     """main activates the game and its various functions by gathering the various componenets of the app.
@@ -58,8 +58,6 @@ def main():
     tile_map = arcade.load_tilemap(constants.MAP_NAME, constants.TILE_SCALE, layer_options)
     scene = arcade.Scene.from_tilemap(tile_map)
 
-    # Creates a sprite ;ist within the scene object
-    #scene.add_sprite_list("Player")
 
     # Initializes the player sprite and assigns attirbutes to it. Then stores it in the scene object
     player_sprite = PlayerSpriteAnimation()
@@ -107,13 +105,13 @@ def main():
     handle_crystal_collision_action = HandleCrystalCollisionAction()
     handle_trap_collision_action = HandleTrapCollisionAction()
     handle_riddlemaster_collision_action = HandleRiddlemasterCollisionAction()
-    animated_sprites = SpriteAnimation()
+    sprite_animation_action = SpriteAnimationAction()
     script["update"] = [handle_coin_collision_action, 
                         handle_death_collision_action, 
                         handle_crystal_collision_action, 
                         handle_trap_collision_action,
                         handle_riddlemaster_collision_action,
-                        animated_sprites
+                        sprite_animation_action
                         ]
 
     # Initializing draw objects and storing it in script
