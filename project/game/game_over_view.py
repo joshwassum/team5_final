@@ -1,5 +1,6 @@
 import arcade
 
+
 class GameOverView(arcade.View):
     """Creates our game over view and sets up the elements on screen. Uses the Window functions built into
     arcade to track movement and camera setup.
@@ -17,7 +18,9 @@ class GameOverView(arcade.View):
         """
         super().__init__()
         self.scene = scene
-        self.scene = props
+        self.props = props
+        self.cast = cast
+        self.script = script
 
     def on_show(self):
         """ This is run once when we switch to this view """
@@ -32,11 +35,11 @@ class GameOverView(arcade.View):
         arcade.start_render()
         arcade.draw_text("Game Over", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
-        # arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75,
-        #                 arcade.color.WHITE, font_size=20, anchor_x="center")
+    #     arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75,
+    #                     arcade.color.WHITE, font_size=20, anchor_x="center")
 
     # def on_mouse_press(self, _x, _y, _button, _modifiers):
     #     """ If the user presses the mouse button, start the game. """
 
-    #     game_view = Game_View(self.scene)
-    #     self.window.show_view(game_view)
+    #     view = GameView(self.scene,self.cast, self.script, self.props)
+    #     self.window.show_view(view)

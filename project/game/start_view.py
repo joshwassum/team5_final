@@ -1,6 +1,5 @@
 import arcade
 import arcade.gui
-from game.game_view import Game_View
 
 class StartView(arcade.View):
     """Creates our start game view and sets up the elements on screen.
@@ -48,8 +47,7 @@ class StartView(arcade.View):
 
 
     def on_click_start(self, event):
-        game_view = Game_View(self.scene, self.cast, self.script, self.props)
-        self.window.show_view(game_view)
+        self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
 
     def on_click_instruction(self, event):
         print("Intruction:", event)

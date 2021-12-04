@@ -1,11 +1,8 @@
 import arcade
-from arcade.key import ASTERISK
 from game.riddlemaster_view import RiddleMasterView
-from game.game_over_view import GameOverView
-from game import constants
 
 
-class Game_View(arcade.View):
+class GameView(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
     arcade to track movement and camera setup.
 
@@ -44,7 +41,6 @@ class Game_View(arcade.View):
         self.physics_engine = props["physics_engine"]
         self.gui_camera = props["gui_camera"]
         self.end_of_map = 0
-        self.level = 1
 
         # Track the current state of what key is pressed
         self.left_pressed = False
@@ -141,8 +137,7 @@ class Game_View(arcade.View):
 
             if game_action:
                 if self.cast["lives"].get_text() > 0:
-                    next_view = RiddleMasterView(self.scene, self.cast, self.props, self.script, self.level)
-                    self.window.show_view(next_view)
+                    self.script["view"].execute(self.scene, self.cast, self.props, self.script, "riddle")
 
             self.scene["Player"][0].change_x = 0
 
