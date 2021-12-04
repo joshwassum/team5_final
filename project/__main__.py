@@ -29,7 +29,7 @@ def main():
             "use_spatial_hash": True,
         },
         constants.LAYER_NAME_FOREGROUND: {
-                "use_spatial_hash": True,
+            "use_spatial_hash": True,
             },
         constants.LAYER_NAME_LADDERS: {
             "use_spatial_hash": True,
@@ -158,6 +158,7 @@ def main():
     props["gui_camera"] = gui_camera
 
     # Starts the game and passes key values to the view
+    player_sprite.set_physics_engine(props["physics_engine"])
     script["view"].execute(scene, cast, props, script, "start")
     arcade.run()
 
