@@ -6,27 +6,33 @@ class GameView(arcade.View):
     arcade to track movement and camera setup.
 
     Stereotype:
-        Controller
+        View
 
     Attributes:
-        script (dict): The game Actions {key: tag, value: Action}
         scene (Scene): An instance of the arcade Scene object.
         cast (dict): The game actors {key: tag, value: list}.
+        props (dict): The game interface objects {key: tag, value: Arcade Object}
+        script (dict): The game Actions {key: tag, value: Action}
         camera (Camera): An instance of the Camera object.
         gui_camera (Camera): An instance of the Camera object.
         end_of_map (int): Sets the end of the map.
-        level (int): Indicates which level the player is on.
+        left_pressed (bool): Tracks if the buttons indicating left movement are pressed.
+        right_pressed (bool): Tracks if the buttons indicating right movement are pressed.
+        up_pressed (bool): Tracks if the buttons indicating upwards movement are pressed.
+        down_pressed (bool): Tracks if the buttons indicating downwards movement are pressed.
+        jump_needs_reset (bool): Tracks to see if the jumping mechanism needs to be reset.
+        jump_sound (Sound): An instance of the arcade Sound object.
     """
 
     def __init__(self, scene, cast, props, script):
         """The class constructor
 
         Args:
-            script (dict): The game Actions {key: tag, value: Action}
             self (GameView): An instance of GameView.
             scene (Scene): An instance of the Scene object.
             cast (dict): The game actors {key: tag, value: list}.
             props (dict): The game interface objects {key: tag, value: Arcade Object}
+            script (dict): The game Actions {key: tag, value: Action}
         """
 
         super().__init__()
@@ -47,7 +53,6 @@ class GameView(arcade.View):
         self.up_pressed = False
         self.down_pressed = False
         self.jump_needs_reset = False
-
         self.jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
 
     def on_draw(self):
@@ -69,9 +74,11 @@ class GameView(arcade.View):
             action.execute(self.cast)
 
     def process_keychange(self):
+        """Called when we change a key up/down or we move on/off a ladder.
+        Args:
+            self (GameView): An instance of the GameView.
         """
-        Called when we change a key up/down or we move on/off a ladder.
-        """
+
         # Process up/down
         if self.up_pressed and not self.down_pressed:
             if self.physics_engine.is_on_ladder():
@@ -103,7 +110,12 @@ class GameView(arcade.View):
             self.scene["Player"][0].change_x = 0
 
     def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed."""
+        """Called whenever a key is pressed.
+        Args:
+            self (GameView): An instance of the GameView.
+            key (int): The key that was pressed.
+            modifiers (???): Any modifiers effecting the key press.
+        """
 
         if key == arcade.key.UP or key == arcade.key.W:
             self.up_pressed = True
@@ -117,7 +129,12 @@ class GameView(arcade.View):
         self.process_keychange()
 
     def on_key_release(self, key, modifiers):
-        """Called when the user releases a key."""
+        """Called when the user releases a key.
+        Args:
+            self (GameView): An instance of the GameView.
+            key (int): The key that was pressed.
+            modifiers (???): Any modifiers effecting the key press.
+        """
 
         if key == arcade.key.UP or key == arcade.key.W:
             self.up_pressed = False
@@ -136,8 +153,9 @@ class GameView(arcade.View):
         """Keeps the camera centered on the player character.
 
         Args:
-            self (Game_Window): An instance of the Game_Window object.
+            self (GameView): An instance of the GameView object.
         """
+
         screen_center_x = self.scene["Player"][0].center_x - (self.camera.viewport_width / 2)
         screen_center_y = self.scene["Player"][0].center_y - (
             self.camera.viewport_height / 2
@@ -151,19 +169,17 @@ class GameView(arcade.View):
         self.camera.move_to(player_centered)
 
     def on_update(self, delta_time):
-        """Movement and game logic
+        """Updates movement and game logic
 
         Args:
-            self (Game_Window): An instance of the Game_Window object.
+            self (GameView): An instance of the GameView object.
             delta_time (Time): An instance of time.
         """
+
         for action in self.script["update"]:
 
-            game_action = action.execute(self.scene, self.cast, self.props, self.script, delta_time)
+            action.execute(self.scene, self.cast, self.props, self.script, delta_time)
 
-            if game_action:
-                if self.cast["lives"].get_text() > 0:
-                    self.script["view"].execute(self.scene, self.cast, self.props, self.script, "riddle")
 
 
         self.physics_engine.update()

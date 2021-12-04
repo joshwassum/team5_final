@@ -1,6 +1,4 @@
-from typing import DefaultDict
-from arcade.key import L
-
+"""Holds all of the game constants."""
 
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 700
@@ -8,7 +6,6 @@ TITLE = "The Heroic V"
 START_LOCATION_X = 64
 START_LOCATION_Y = 128
 MAX_LIVES = 5
-# File path to riddle folder
 CHARACTER_SCALE = 1
 TILE_SCALE = .5
 COIN_SCALE = 1

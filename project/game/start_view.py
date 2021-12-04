@@ -5,16 +5,28 @@ class StartView(arcade.View):
     """Creates our start game view and sets up the elements on screen.
 
     Stereotype:
-        Controller
+        View
+
+    Attributes:
+        scene (Scene): An instance of the arcade Scene object.
+        cast (dict): The game actors {key: tag, value: list}.
+        props (dict): The game interface objects {key: tag, value: Arcade Object}.
+        script (dict): The game Actions {key: tag, value: Action}.
+        manager (UIManager): An instance of the arcade gui UIManager object.
+        v_box (UIBoxLayout): An instance of the arcade gui UIBoxLayout object
     """
 
     def __init__(self, scene, cast, props, script):
-        """The class constructor
+        """The class constructor.
 
         Args:
-            scene (Scene): An instance of the Scene object
-            collision_engine (Handle_Collisions_Action): An instance of the Handle_Collisions_Action object.
+            self (StartView): An instance of StartView.
+            scene (Scene): An instance of the Scene object.
+            cast (dict): The game actors {key: tag, value: list}.
+            props (dict): The game interface objects {key: tag, value: Arcade Object}.
+            script (dict): The game Actions {key: tag, value: Action}.
         """
+
         super().__init__()
         self.scene = scene
         self.cast = cast
@@ -47,12 +59,32 @@ class StartView(arcade.View):
 
 
     def on_click_start(self, event):
+        """Allows us to perform some action when called.
+            In this case we are Starting the game.
+        Args:
+            self (StartView): An instance of StartView.
+            event (Event): The triggering arcade gui event.
+        """
+
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
 
     def on_click_instruction(self, event):
+        """Allows us to perform some action when called.
+            In this case we are Sending the view to the instructions view.
+        Args:
+            self (StartView): An instance of StartView.
+            event (Event): The triggering arcade gui event.
+        """
+
+        # Placeholder until the intructions screen is created.
         print("Intruction:", event)
 
     def on_draw(self):
+        """ Draw this view 
+        Args:
+            self (game_over_view): An instance of GameOverView
+        """
+
         arcade.start_render()
         self.manager.draw()
         arcade.draw_text("The Heroic V", self.window.width / 2, self.window.height / 2 + 150,

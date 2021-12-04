@@ -4,15 +4,17 @@ class Action:
 
     Stereotype:
         Controller
-
-    Attributes:
-        _tag (string): The action tag (input, update or output).
     """
 
     def execute(self, scene, cast, props, script, delta_time):
         """Executes the action using the given actors.
 
         Args:
+            self (Action): An instance of Action.
+            scene (Scene): An instance of the Scene object.
             cast (dict): The game actors {key: tag, value: list}.
+            props (dict): The game interface objects {key: tag, value: Arcade Object}
+            script (dict): The game Actions {key: tag, value: Action}
+            delta_time (Time): Used for determining game time.
         """
         raise NotImplementedError("execute not implemented in superclass")

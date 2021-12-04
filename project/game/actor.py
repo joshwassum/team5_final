@@ -34,10 +34,16 @@ class Actor():
     
     def add_number(self):
         """ Increases self._number by 1.
+
+        Args:
+            self (Actor): An instance of Actor.
         """
         self._number += 1
 
     def subtract_number(self):
         """ Decreases self._number by 1.
+
+        Args:
+            self (Actor): An instance of Actor.
         """
         self._number -= 1

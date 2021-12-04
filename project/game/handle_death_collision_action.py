@@ -7,33 +7,41 @@ class HandleDeathCollisionAction(Action):
 
     Stereotype:
         Controller
+
+    Attributes:
+        scene (Scene): An instance of the Scene object.
+        cast (dict): The game actors {key: tag, value: list}.
+        props (dict): The game interface objects {key: tag, value: Arcade Object}
+        script (dict): The game Actions {key: tag, value: Action}
     """
 
     def execute(self, scene, cast, props, script, delta_time):
-
         """Executes the action using the given actors.
 
         Args:
-            self (HandleRiddlemasterCollisionAction): An instance of the HandleRiddlemasterCollisionAction object.
+            self (HandleDeathCollisionAction): An instance of the HandleDeathCollisionAction object.
             scene (Scene): An instance of the Scene object.
             cast (dict): The game actors {key: tag, value: list}.
+            props (dict): The game interface objects {key: tag, value: Arcade Object}
+            script (dict): The game Actions {key: tag, value: Action}
+            delta_time (Time): Used for determining game time.
         """
+
         self.scene = scene
         self.cast = cast
         self.props = props
         self.script = script
         self._handle_death_collisions(scene["Player"][0], cast["lives"])
 
-
-
     def _handle_death_collisions(self, player_location, lives):
         """This function checks the players location to see if they have fallen. If True the lives is reduced by one and the game resets.
 
         Args:
-            self (Handle_Death_Collisions): An instance of Handle_Collisions_Action
-            lives (cast): is an instance of the marquee class
-            Player (Sprite): An instance of the Sprites class.
+            self (HandleDeathCollisionAction): An instance of HandleDeathCollisionAction.
+            lives (cast): An instance of the Actor class.
+            Player (Sprite): An instance of the arcade Sprite class.
         """
+
         death_sound = arcade.load_sound(constants.DEATH_SOUND)
 
         death_count = lives.get_text()
