@@ -10,6 +10,7 @@ from game.handle_riddlemaster_collision_action import HandleRiddlemasterCollisio
 from game.control_sprites_action import ControlSpritesAction
 from game.draw_cast_action import DrawCastAction
 from game.animated_sprites import SpriteAnimation
+from game.player_animation import PlayerSpriteAnimation
 
 def main():
     """main activates the game and its various functions by gathering the various componenets of the app.
@@ -58,13 +59,13 @@ def main():
     scene = arcade.Scene.from_tilemap(tile_map)
 
     # Creates a sprite ;ist within the scene object
-    scene.add_sprite_list("Player")
+    #scene.add_sprite_list("Player")
 
     # Initializes the player sprite and assigns attirbutes to it. Then stores it in the scene object
-    player_sprite = arcade.Sprite(":resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png", constants.CHARACTER_SCALE)
+    player_sprite = PlayerSpriteAnimation()
     player_sprite.center_x = constants.START_LOCATION_X
     player_sprite.center_y = constants.START_LOCATION_Y
-    scene.add_sprite("Player", player_sprite)
+    scene.add_sprite(constants.LAYER_NAME_PLAYER, player_sprite)
 
 
 #########################Cast Objects######################################
@@ -86,8 +87,6 @@ def main():
     crystals = Actor()
     crystals.set_text(0)
     cast["crystals"] = crystals
-
-    
 
 
 #########################Script Objects######################################  
