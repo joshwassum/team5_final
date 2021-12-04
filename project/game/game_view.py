@@ -1,5 +1,5 @@
 import arcade
-
+from game import constants
 
 class GameView(arcade.View):
     """Creates our game screen and sets up the elements on screen. Uses the Window functions built into
@@ -46,6 +46,9 @@ class GameView(arcade.View):
         self.right_pressed = False
         self.up_pressed = False
         self.down_pressed = False
+        self.jump_needs_reset = False
+
+        self.jump_sound = arcade.load_sound(constants.PLAYER_JUMP_SOUND)
 
     def on_draw(self):
         """Renders the screen.
@@ -65,16 +68,42 @@ class GameView(arcade.View):
         for action in self.script["draw"]:
             action.execute(self.cast)
 
+    def process_keychange(self):
+        """
+        Called when we change a key up/down or we move on/off a ladder.
+        """
+        # Process up/down
+        if self.up_pressed and not self.down_pressed:
+            if self.physics_engine.is_on_ladder():
+                self.scene["Player"][0].change_y = constants.PLAYER_MOVEMENT_SPEED
+            elif (
+                self.physics_engine.can_jump(y_distance=10)
+                and not self.jump_needs_reset
+            ):
+                self.scene["Player"][0].change_y = constants.PLAYER_JUMP_SPEED
+                self.jump_needs_reset = True
+                arcade.play_sound(self.jump_sound)
+        elif self.down_pressed and not self.up_pressed:
+            if self.physics_engine.is_on_ladder():
+                self.scene["Player"][0].change_y = -constants.PLAYER_MOVEMENT_SPEED
+
+        # Process up/down when on a ladder and no movement
+        if self.physics_engine.is_on_ladder():
+            if not self.up_pressed and not self.down_pressed:
+                self.scene["Player"][0].change_y = 0
+            elif self.up_pressed and self.down_pressed:
+                self.scene["Player"][0].change_y = 0
+
+        # Process left/right
+        if self.right_pressed and not self.left_pressed:
+            self.scene["Player"][0].change_x = constants.PLAYER_MOVEMENT_SPEED
+        elif self.left_pressed and not self.right_pressed:
+            self.scene["Player"][0].change_x = -constants.PLAYER_MOVEMENT_SPEED
+        else:
+            self.scene["Player"][0].change_x = 0
 
     def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed. Handles the movement of the player_sprite.
-        Args:
-            self (Game_Window): An instance of the Game_Window object.
-        """
-        press = True
-        if key == arcade.key.LEFT and key == arcade.key.RIGHT:
-            press = False
-        self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
+        """Called whenever a key is pressed."""
 
         if key == arcade.key.UP or key == arcade.key.W:
             self.up_pressed = True
@@ -85,24 +114,22 @@ class GameView(arcade.View):
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.right_pressed = True
 
+        self.process_keychange()
+
     def on_key_release(self, key, modifiers):
-        """Called when the user releases a key.
-        Args:
-            self (Game_View): An instance of Game_View.
-        """
-        press = False
-        if key == arcade.key.LEFT or key == arcade.key.RIGHT:
-            press = True
-        self.script["movement"][0].execute(self.scene, key, self.physics_engine, press)
+        """Called when the user releases a key."""
 
         if key == arcade.key.UP or key == arcade.key.W:
             self.up_pressed = False
+            self.jump_needs_reset = False
         elif key == arcade.key.DOWN or key == arcade.key.S:
             self.down_pressed = False
         elif key == arcade.key.LEFT or key == arcade.key.A:
             self.left_pressed = False
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.right_pressed = False
+
+        self.process_keychange()
 
 
     def center_camera_to_player(self):
@@ -142,6 +169,8 @@ class GameView(arcade.View):
 
             if self.up_pressed and not self.down_pressed:
                 self.script["movement"][0].execute(self.scene, arcade.key.UP, self.physics_engine, self.up_pressed)
+                if not self.physics_engine.is_on_ladder():
+                    self.up_pressed = False
             elif self.down_pressed and not self.up_pressed:
                 self.script["movement"][0].execute(self.scene, arcade.key.DOWN, self.physics_engine, self.down_pressed)
             if self.left_pressed and not self.right_pressed:
@@ -150,4 +179,16 @@ class GameView(arcade.View):
                 self.script["movement"][0].execute(self.scene, arcade.key.RIGHT, self.physics_engine, self.right_pressed)
 
         self.physics_engine.update()
+
+        if self.physics_engine.can_jump():
+            self.scene["Player"][0].can_jump = False
+        else:
+            self.scene["Player"][0].can_jump = True
+
+        if self.physics_engine.is_on_ladder() and not self.physics_engine.can_jump():
+            self.scene["Player"][0].is_on_ladder = True
+            self.process_keychange()
+        else:
+            self.scene["Player"][0].is_on_ladder = False
+            self.process_keychange()
         self.center_camera_to_player()

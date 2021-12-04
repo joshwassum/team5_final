@@ -49,3 +49,14 @@ class DrawCastAction(Action):
             arcade.csscolor.WHITE,
             18
         )
+
+        # Draws the crystal cast element
+        level = cast["level"]
+        level_text = f"Level: {level.get_text()}"
+        arcade.draw_text(
+            level_text,
+            10,
+            constants.SCREEN_HEIGHT - 400,
+            arcade.csscolor.WHITE,
+            18
+        )

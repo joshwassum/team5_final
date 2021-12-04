@@ -35,7 +35,7 @@ class RiddlemasterView(arcade.View):
         self.script = script
         self.riddle = ""
         self.answer = ""
-        self.level = self.cast["level"]
+        self.level = self.cast["level"].get_text()
         self.iter = 0
         for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():
             self.riddle = key
@@ -83,7 +83,7 @@ class RiddlemasterView(arcade.View):
         """
         arcade.start_render()
         self.manager.draw()
-        for action in self.script["draw"]:
+        for action in self.script['draw']:
             action.execute(self.cast)
 
     def on_click_open(self, event):
@@ -91,7 +91,7 @@ class RiddlemasterView(arcade.View):
         Args:
         self (riddlemaster_view): An instance of the riddlemaster_view
         """
-        if self.iter < len(constants.RIDDLE_MASTER_SCRIPT[self.level - 1]):
+        if self.iter < len(constants.RIDDLE_MASTER_SCRIPT[self.level - 1]) + 1:
             if self.answer == self.text.text.upper().strip():
                 self.iter += 1
                 for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():

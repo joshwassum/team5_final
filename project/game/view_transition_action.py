@@ -36,5 +36,5 @@ class ViewTransitionAction(Action):
         props["window"].show_view(view)
 
     def riddlemaster_view(self, scene, cast, props, script):
-        view = RiddlemasterView(scene, cast, script, props)
+        view = RiddlemasterView(scene, cast, props, script)
         props["window"].show_view(view)
