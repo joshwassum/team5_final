@@ -18,7 +18,7 @@ class GameView(arcade.View):
         level (int): Indicates which level the player is on.
     """
 
-    def __init__(self, scene, cast, script, props):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
 
         Args:

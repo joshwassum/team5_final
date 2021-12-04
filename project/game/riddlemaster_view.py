@@ -1,7 +1,5 @@
 import arcade
 import arcade.gui
-from game.victory_view import VictoryView
-from game.game_over_view import GameOverView
 from game import constants
 
 
@@ -21,7 +19,7 @@ class RiddlemasterView(arcade.View):
     """
 
     def __init__(self, scene, cast, props, script):
-        """The class constructor
+        """The class constructor.
         Args:
             scene (Scene): An instance of the Scene object
             cast (dict): The game actors {key: tag, value: list}.
@@ -103,11 +101,9 @@ class RiddlemasterView(arcade.View):
                 self.cast["lives"].subtract_number()
                 self.text.text = "Try again!"
             if self.cast["lives"].get_text() < 1:
-                next_view = GameOverView(self.scene, self.cast,self.script, self.props)
-                self.window.show_view(next_view)
+                self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
         else:
-            next_view = VictoryView(self.scene, self.cast,self.script, self.props)
-            self.window.show_view(next_view)
+            self.script["view"].execute(self.scene, self.cast, self.props, self.script, "victory")
 
 
 
