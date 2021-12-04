@@ -8,6 +8,9 @@ class SpriteAnimationAction(Action):
 
     Stereotype:
         Controller
+
+    Attributes:
+        scene (Scene): An instance of the arcade Scene object.
     """
 
 
@@ -15,9 +18,12 @@ class SpriteAnimationAction(Action):
         """Executes the action using the given actors.
 
         Args:
-            self (SpriteAnimation): An instance of the SpriteAnimation object.
+            self (SpriteAnimationAction): An instance of the SpriteAnimationAction object.
             scene (Scene): An instance of the Scene object.
-            delta_time (Clock): Schedule a function to be called every interval seconds.
+            cast (dict): The game actors {key: tag, value: list}.
+            props (dict): The game interface objects {key: tag, value: Arcade Object}
+            script (dict): The game Actions {key: tag, value: Action}
+            delta_time (Time): Used for determining game time.
         """
 
         self.scene = scene

@@ -9,21 +9,22 @@ class PlayerSpriteAnimation(arcade.Sprite):
         The data is returned as the Player_sprite object in the scene.
 
         Stereotype:
-            Actor
-  
+            Sprite
+
+        Attributes:
+            character_face_direction (int): sets the default facing direction.
+            current_texture (int): sets the default image.
+            scale (int): sets the scale for the player sprite.
+            jumping (bool): Used to identify player state.
+            climbing (bool): Used to identify player state.
+            is_on_ladder (bool): Used to identify player state.
     """
 
     def __init__(self):
         """The class constructor
 
         Args:
-            self.character_face_direction (int): sets the default facing direction
-            self.current_texture (int): sets the defualt image
-            self.scale (int): sets the scale for the player sprite
-
-            self.jumping (bool): Used to identify player state
-            self.climbing (bool): Used to identify player state
-            self.is_on_ladder (bool): Used to identify player state
+            self (PlayerSpriteAnimation): An instance of the PlayerSpriteAnimation class.
         """
         super().__init__()
 
@@ -37,16 +38,11 @@ class PlayerSpriteAnimation(arcade.Sprite):
         self._setup()
 
     def _setup(self):
-        """The conpletes class construction. Loads all the images required for animating the player sprite.
+        """The completes class construction. Loads all the images required for animating the player sprite.
 
         Args:
-            self.idle_texture_pair (list): loads copy of original image and a mirrored copy
-            self.jump_texture_pair (list): loads copy of original image and a mirrored copy
-            self.fall_texture_pair (list): loads copy of original image and a mirrored copy
-            self.walk_textures (list): loads copy of original images and a mirrored copys for all 9 walking images in order
-            self.climbing_textures (list): loads copy of original image and a mirrored copy
+            self (PlayerSpriteAnimation): An instance of the PlayerSpriteAnimation class.
         """
-
 
         self.idle_texture_pair = self.load_picture_pairs(f"{constants.MAIN_FILE}_idle.png")
         self.jump_texture_pair = self.load_picture_pairs(f"{constants.MAIN_FILE}_jump.png")
@@ -66,13 +62,13 @@ class PlayerSpriteAnimation(arcade.Sprite):
         self.texture = self.idle_texture_pair[0]
 
     def load_picture_pairs(self, filename):
-        """
-        Load the picture pairs, with the second being a mirror image.
+        """Load the picture pairs, with the second being a mirror image.
 
         Args:
+            self (PlayerSpriteAnimation): An instance of the PlayerSpriteAnimation class.
             filename (str): sets the default file location
-
         """
+
         return [
             arcade.load_texture(filename),
             arcade.load_texture(filename, flipped_horizontally=True),
@@ -80,14 +76,10 @@ class PlayerSpriteAnimation(arcade.Sprite):
 
 
     def update_animation(self, delta_time: float = 1 / 60):
-        """
-        Game logic to determine player animation and direction.
+        """Game logic to determine player animation and direction.
 
         Args:
-            self.character_face_direction (int): tracks the player movement direction
-            self.is_on_ladder (bool): tracks current animation image            
-            self.climbing (bool): sets current animation image
-            self.current_texture (int): sets current list index for animation texture
+            self (PlayerSpriteAnimation): An instance of the PlayerSpriteAnimation class.
         """
 
         if self.change_x < 0 and self.character_face_direction == constants.RIGHT_FACING:

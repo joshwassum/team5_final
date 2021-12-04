@@ -13,13 +13,13 @@ from game.player_sprite_animation import PlayerSpriteAnimation
 
 def main():
     """main activates the game and its various functions by gathering the various componenets of the app.
-    It then initializes these componenets and seperates them into groups and sub groups. I then passes it to
+    It then initializes these componenets and separates them into groups and sub groups. I then passes it to
     the start view object.
     """
     
 #########################Scene Objects######################################  
 
-    # Inilizes arcade Scene object
+    # Initializes arcade Scene object
     scene = arcade.Scene()
 
     # Layer Specific Options for the Tilemap
@@ -57,8 +57,7 @@ def main():
     tile_map = arcade.load_tilemap(constants.MAP_NAME, constants.TILE_SCALE, layer_options)
     scene = arcade.Scene.from_tilemap(tile_map)
 
-    scene.add_sprite_list_before("Player", constants.LAYER_NAME_FOREGROUND)
-    # Initializes the player sprite and assigns attirbutes to it. Then stores it in the scene object
+    # Initializes the player sprite and assigns attributes to it. Then stores it in the scene object
     player_sprite = PlayerSpriteAnimation()
     player_sprite.center_x = constants.START_LOCATION_X
     player_sprite.center_y = constants.START_LOCATION_Y
@@ -73,7 +72,7 @@ def main():
 
     # Initializing an Actor object and saves it as lives in cast
     lives = Actor()
-    lives.set_text(5)
+    lives.set_text(constants.MAX_LIVES)
     cast["lives"] = lives
 
     # Initializing an Actor object and saves it as score in cast
@@ -89,7 +88,7 @@ def main():
 
     # Initializing an Actor object and saves it as level in cast
     level = Actor()
-    level.set_text(1)
+    level.set_text(constants.LEVEL)
     cast["level"] = level
 
 
