@@ -33,7 +33,6 @@ class PlayerSpriteAnimation(arcade.Sprite):
         self.jumping = False
         self.climbing = False
         self.is_on_ladder = False
-        self._physics_engine = None
 
         self._setup()
 
@@ -86,8 +85,9 @@ class PlayerSpriteAnimation(arcade.Sprite):
 
         Args:
             self.character_face_direction (int): tracks the player movement direction
-            
-        
+            self.is_on_ladder (bool): tracks current animation image            
+            self.climbing (bool): sets current animation image
+            self.current_texture (int): sets current list index for animation texture
         """
 
         if self.change_x < 0 and self.character_face_direction == constants.RIGHT_FACING:

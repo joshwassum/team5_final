@@ -3,7 +3,7 @@ from game.action import Action
 from game import constants
 
 
-class SpriteAnimation(Action):
+class SpriteAnimationAction(Action):
     """The responsibility of this class of objects is to update the animation of the sprite lists 
         in the tile map.
 
