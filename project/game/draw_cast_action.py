@@ -3,7 +3,7 @@ from game import constants
 import arcade
 
 class DrawCastAction(Action):    
-    """This is a polymorphism of the action calss. This particular class deals with the drawing of the 
+    """This is a polymorphism of the action class. This particular class deals with the drawing of the 
     various cast elements
 
     Stereotype:
@@ -50,13 +50,13 @@ class DrawCastAction(Action):
             18
         )
 
-        # Draws the crystal cast element
+        # Draws the level cast element
         level = cast["level"]
         level_text = f"Level: {level.get_text()}"
         arcade.draw_text(
             level_text,
-            10,
-            constants.SCREEN_HEIGHT - 400,
+            600,
+            constants.SCREEN_HEIGHT - 20,
             arcade.csscolor.WHITE,
             18
         )
