@@ -65,6 +65,7 @@ def main():
     player_sprite = PlayerSpriteAnimation()
     player_sprite.center_x = constants.START_LOCATION_X
     player_sprite.center_y = constants.START_LOCATION_Y
+    
     scene.add_sprite(constants.LAYER_NAME_PLAYER, player_sprite)
 
 
@@ -93,9 +94,6 @@ def main():
     level = Actor()
     level.set_text(1)
     cast["level"] = level
-
-    
-
 
 
 #########################Script Objects######################################  
@@ -158,7 +156,6 @@ def main():
     props["gui_camera"] = gui_camera
 
     # Starts the game and passes key values to the view
-    player_sprite.set_physics_engine(props["physics_engine"])
     script["view"].execute(scene, cast, props, script, "start")
     arcade.run()
 

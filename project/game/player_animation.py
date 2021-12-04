@@ -96,9 +96,9 @@ class PlayerSpriteAnimation(arcade.Sprite):
             self.character_face_direction = constants.RIGHT_FACING
 
         # Sets up player climbing animation
-        if self._physics_engine.is_on_ladder:
+        if self.is_on_ladder:
             self.climbing = True
-        if not self._physics_engine.is_on_ladder and self.climbing:
+        if not self.is_on_ladder and self.climbing:
             self.climbing = False
         if self.climbing and abs(self.change_y) > 1:
             self.current_texture += 1
@@ -109,10 +109,10 @@ class PlayerSpriteAnimation(arcade.Sprite):
             return
 
         # Jumping animation
-        if self.change_y > 0 and not self._physics_engine.is_on_ladder:
+        if self.change_y > 0 and not self.is_on_ladder:
             self.texture = self.jump_texture_pair[self.character_face_direction]
             return
-        elif self.change_y < 0 and not self._physics_engine.is_on_ladder:
+        elif self.change_y < 0 and not self.is_on_ladder:
             self.texture = self.fall_texture_pair[self.character_face_direction]
             return
 
@@ -126,7 +126,3 @@ class PlayerSpriteAnimation(arcade.Sprite):
         if self.current_texture > 7:
             self.current_texture = 0
         self.texture = self.walk_textures[self.current_texture][self.character_face_direction]
-
-    def set_physics_engine(self, physics_engine):
-
-        self._physics_engine = physics_engine
