@@ -120,8 +120,10 @@ class RiddlemasterView(arcade.View):
                 self.cast["lives"].subtract_number()
                 self.text.text = "Try again!"
             if self.cast["lives"].get_text() < 1:
+                self.iter = 0
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
         else:
+            self.iter = 0
             self.script["view"].execute(self.scene, self.cast, self.props, self.script, "victory")
 
 
