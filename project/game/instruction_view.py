@@ -1,7 +1,7 @@
 import arcade
 import arcade.gui
 
-class instructionView(arcade.View):
+class InstructionView(arcade.View):
     """Creates our start game view and sets up the elements on screen.
 
     Stereotype:
@@ -48,12 +48,12 @@ class instructionView(arcade.View):
 
 
     def on_click_start(self, event):
-         """The on click to start the game view
+        """The on click to start the game view
 
         Args:
             self (instance): An instance of the instruction_view
-         
         """
+        print("you made it here.")
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
 
     #def on_click_instruction(self, event):
@@ -69,11 +69,11 @@ class instructionView(arcade.View):
         self.manager.draw()
         arcade.draw_text("The Heroic V", self.window.width / 2, self.window.height / 2 + 150,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Instruction", self.window.width / 2, self.window.height / 2,
+        arcade.draw_text("Instructions", self.window.width / 2, self.window.height / 2 + 85,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
 
-        arcade.draw_text("Be the hero V and go collect 5 cystals to give to the Riddle Master to win the dungon. ", self.window.width / 2, self.window.height / 2-75,
-                        arcade.color.WHITE, font_size=20, anchor_x="center")
+        arcade.draw_text("Be the hero V and go collect 5 crystals to give to the Riddle Master who will ask a series of riddles to complete the dungeon. ", self.window.width / 2, self.window.height / 2-75,
+                        arcade.color.WHITE, font_size=14, anchor_x="center")
 
-        arcade.draw_text("Along the way collect coins to earn points. Lets see what you can do!", self.window.width / 2, self.window.height / 2-75,
-                        arcade.color.WHITE, font_size=20, anchor_x="center")
+        arcade.draw_text("Along the way collect coins to earn points. Let's see what you can do!", self.window.width / 2, self.window.height / 2-125,
+                        arcade.color.WHITE, font_size=14, anchor_x="center")

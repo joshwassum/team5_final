@@ -43,12 +43,12 @@ class StartView(arcade.View):
         start_button = arcade.gui.UIFlatButton(text="Start Game", width=200)
         self.v_box.add(start_button.with_space_around(bottom=20))
 
-        #instruction_button = arcade.gui.UIFlatButton(text="Instructions", width=200)
-        #self.v_box.add(instruction_button.with_space_around(bottom=20))
+        instruction_button = arcade.gui.UIFlatButton(text="Instructions", width=200)
+        self.v_box.add(instruction_button.with_space_around(bottom=20))
 
         start_button.on_click = self.on_click_start
 
-        #instruction_button.on_click = self.on_click_instruction
+        instruction_button.on_click = self.on_click_instruction
 
         self.manager.add(
             arcade.gui.UIAnchorWidget(
@@ -78,7 +78,7 @@ class StartView(arcade.View):
         """
 
         # Placeholder until the intructions screen is created.
-        print("Intruction:", event)
+        self.script["view"].execute(self.scene, self.cast, self.props, self.script, "instruction")
 
 
     def on_draw(self):

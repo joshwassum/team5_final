@@ -4,6 +4,7 @@ from game.game_view import GameView
 from game.riddlemaster_view import RiddlemasterView
 from game.victory_view import VictoryView
 from game.game_over_view import GameOverView
+from game.instruction_view import InstructionView
 
 class ViewTransitionAction(Action):
     """A code template for a thing done in a game. The responsibility of
@@ -35,6 +36,8 @@ class ViewTransitionAction(Action):
             self._game_over_view(cast, props, script)
         elif view == 'victory':
             self._victory_view(cast, props, script)
+        elif view == 'instruction':
+            self._instruction_view(scene, cast, props, script)
 
     def _start_view(self, scene, cast, props, script):
         """Handles the transition to the start screen.
@@ -48,6 +51,20 @@ class ViewTransitionAction(Action):
         """
 
         view = StartView(scene, cast, props, script)
+        props["window"].show_view(view)
+
+    def _instruction_view(self, scene, cast, props, script):
+        """Handles the transition to the start screen.
+
+        Args:
+            self (ViewTransitionAction): An instance of ViewTransitionAction.
+            scene (Scene): An instance of the Scene object.
+            cast (dict): The game actors {key: tag, value: list}.
+            props (dict): The game interface objects {key: tag, value: Arcade Object}
+            script (dict): The game Actions {key: tag, value: Action}
+        """
+
+        view = InstructionView(scene, cast, props, script)
         props["window"].show_view(view)
 
     def _game_view(self, scene, cast, props, script):
