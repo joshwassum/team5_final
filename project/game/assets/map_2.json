@@ -331,19 +331,37 @@
                  "id":3,
                  "image":"images\/coinBronze.png",
                  "imageheight":128,
-                 "imagewidth":128
+                 "imagewidth":128,
+                 "properties":[
+                        {
+                         "name":"Points ",
+                         "type":"int",
+                         "value":1
+                        }]
                 }, 
                 {
                  "id":4,
                  "image":"images\/coinGold.png",
                  "imageheight":128,
-                 "imagewidth":128
+                 "imagewidth":128,
+                 "properties":[
+                        {
+                         "name":"Points",
+                         "type":"int",
+                         "value":5
+                        }]
                 }, 
                 {
                  "id":5,
                  "image":"images\/coinSilver.png",
                  "imageheight":128,
-                 "imagewidth":128
+                 "imagewidth":128,
+                 "properties":[
+                        {
+                         "name":"Points",
+                         "type":"int",
+                         "value":3
+                        }]
                 }, 
                 {
                  "id":6,
@@ -379,7 +397,13 @@
                  "id":15,
                  "image":"images\/gemGreen.png",
                  "imageheight":128,
-                 "imagewidth":128
+                 "imagewidth":128,
+                 "properties":[
+                        {
+                         "name":"Points",
+                         "type":"int",
+                         "value":15
+                        }]
                 }, 
                 {
                  "id":16,
