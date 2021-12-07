@@ -12,6 +12,7 @@ class Actor():
         """
 
         self._number = None
+        self._x = None
 
 
     def set_text(self, number):
@@ -47,3 +48,19 @@ class Actor():
             self (Actor): An instance of Actor.
         """
         self._number -= 1
+
+    def add_points(self, x):
+        """ Increases self._number by given number.
+
+        Args:
+            self (Actor): An instance of Actor.
+        """
+        self._number += x
+
+    def subtract_points(self, x):
+        """ Decreases self._number by given number.
+
+        Args:
+            self (Actor): An instance of Actor.
+        """
+        self._number -= x
