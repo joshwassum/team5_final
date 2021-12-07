@@ -75,4 +75,9 @@ RIDDLE_MASTER_SCRIPT = [[{"You've made it to the Riddle Master, click OK": ""},
 {"What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"},  
 {"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"},
 {"What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"},
-{"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}]]
+{"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}],
+[{"You've come for round two eh? Think you can handle it?, click OK": ""},{"What gets wet while drying?": "TOWEL"}, 
+{"I have branches, but no fruit, trunk or leaves. What am I?": "BANK"},
+{"The more of this there is, the less you see. What is it?": "DARKNESS"},
+{"David’s parents have three sons: Snap, Crackle, and what’s the name of the third son?": "DAVID"},
+{"I’m found in socks, scarves and mittens; and often in the paws of playful kittens. What am I?": "YARN"}]]
