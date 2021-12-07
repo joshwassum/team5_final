@@ -16,55 +16,6 @@ def main():
     It then initializes these componenets and separates them into groups and sub groups. I then passes it to
     the start view object.
     """
-    
-#########################Scene Objects######################################  
-
-    # Initializes arcade Scene object
-    scene = arcade.Scene()
-
-    # Layer Specific Options for the Tilemap
-    layer_options = {
-        constants.LAYER_NAME_PLATFORMS: {
-            "use_spatial_hash": True,
-        },
-        constants.LAYER_NAME_FOREGROUND: {
-            "use_spatial_hash": True,
-            },
-        constants.LAYER_NAME_LADDERS: {
-            "use_spatial_hash": True,
-            },
-        constants.LAYER_NAME_COINS: {
-            "use_spatial_hash": True,
-            },
-        constants.LAYER_NAME_PLAYER: {
-            "use_spatial_hash": False,
-            },
-        constants.LAYER_NAME_TRAPS: {
-            "use_spatial_hash": True,
-            },        
-        constants.LAYER_NAME_CRYSTALS: {
-            "use_spatial_hash": True,
-            },
-        constants.LAYER_NAME_BACKGROUND: {
-            "use_spatial_hash": True,
-            },
-        constants.LAYER_NAME_RIDDLEMASTER: {
-            "use_spatial_hash": True,
-            },
-    }
-
-    # Saves the tilemap and stores in the Scene object
-    tile_map = arcade.load_tilemap(constants.MAP_NAME, constants.TILE_SCALE, layer_options)
-    scene = arcade.Scene.from_tilemap(tile_map)
-
-    # Initializes the player sprite and assigns attributes to it. Then stores it in the scene object
-    player_sprite = PlayerSpriteAnimation()
-    player_sprite.center_x = constants.START_LOCATION_X
-    player_sprite.center_y = constants.START_LOCATION_Y
-    
-    scene.add_sprite(constants.LAYER_NAME_PLAYER, player_sprite)
-
-
 #########################Cast Objects######################################
 
     # Initializing cast dictionary
@@ -90,6 +41,29 @@ def main():
     level = Actor()
     level.set_text(constants.LEVEL)
     cast["level"] = level
+
+
+
+#########################Scene Objects######################################  
+
+    # Initializes arcade Scene object
+    scene = arcade.Scene()
+
+    map_level = level.get_text()
+    map_name = f"project/game/assets/map_{map_level}.json"
+
+    # Saves the tilemap and stores in the Scene object
+    tile_map = arcade.load_tilemap(map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)
+    scene = arcade.Scene.from_tilemap(tile_map)
+
+    # Initializes the player sprite and assigns attributes to it. Then stores it in the scene object
+    player_sprite = PlayerSpriteAnimation()
+    player_sprite.center_x = constants.START_LOCATION_X
+    player_sprite.center_y = constants.START_LOCATION_Y
+    
+    scene.add_sprite(constants.LAYER_NAME_PLAYER, player_sprite)
+
+
 
 
 #########################Script Objects######################################  

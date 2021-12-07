@@ -124,7 +124,7 @@ class RiddlemasterView(arcade.View):
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
         else:
             self.iter = 0
-            self.script["view"].execute(self.scene, self.cast, self.props, self.script, "victory")
+            self.script["view"].execute(self.scene, self.cast, self.props, self.script, "level_advance_view")
 
 
 
