@@ -30,11 +30,11 @@ class HandleTrapCollisionAction(Action):
         self.props = props
         self.cast = cast
         self.script = script
-        self._handle_trap_collisions(scene["Traps"], scene["Player"][0], cast["lives"])
+        self._handle_trap_collisions(scene["Traps"], scene["Player"][0], cast["lives"], cast["score"])
 
 
 
-    def _handle_trap_collisions(self, traps, player_location, lives):
+    def _handle_trap_collisions(self, traps, player_location, lives, score):
         """This function checks the players location to see if they have landed on a trap. 
             If True the lives is reduced by one and the game resets.
 
@@ -50,6 +50,7 @@ class HandleTrapCollisionAction(Action):
         if arcade.check_for_collision_with_list(player_location, traps):
             arcade.play_sound(traps_sound)
             lives.subtract_number()
+            score.subtract_points(constants.DEATH_COST)
             lives_left = lives.get_text()
             if lives_left < 1:
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")

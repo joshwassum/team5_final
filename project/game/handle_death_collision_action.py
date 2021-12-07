@@ -31,9 +31,9 @@ class HandleDeathCollisionAction(Action):
         self.cast = cast
         self.props = props
         self.script = script
-        self._handle_death_collisions(scene["Player"][0], cast["lives"])
+        self._handle_death_collisions(scene["Player"][0], cast["lives"], cast["score"])
 
-    def _handle_death_collisions(self, player_location, lives):
+    def _handle_death_collisions(self, player_location, lives, score):
         """This function checks the players location to see if they have fallen. If True the lives is reduced by one and the game resets.
 
         Args:
@@ -48,6 +48,7 @@ class HandleDeathCollisionAction(Action):
         if player_location.center_y < -10:
             arcade.play_sound(death_sound)
             lives.subtract_number()
+            score.subtract_points(constants.DEATH_COST)
             if death_count < 2:
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
             else:

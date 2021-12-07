@@ -36,7 +36,7 @@ class GameView(arcade.View):
         """
 
         super().__init__()
-        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        arcade.set_background_color(arcade.csscolor.DARK_SLATE_GRAY)
 
         self.script = script
         self.scene = scene

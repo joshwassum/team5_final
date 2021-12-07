@@ -43,6 +43,10 @@ class HandleCoinCollisionAction(Action):
 
         # Loops through the collision list and removes the coins from the scene.
         for coin in coin_collision_list:
+
+            points = coin.properties["Points"]
+
+            score.add_points(points)
+
             coin.remove_from_sprite_lists()
             arcade.play_sound(coin_collect_sound)
-            score.add_number()
