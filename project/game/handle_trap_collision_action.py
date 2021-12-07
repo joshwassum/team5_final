@@ -50,7 +50,7 @@ class HandleTrapCollisionAction(Action):
         if arcade.check_for_collision_with_list(player_location, traps):
             arcade.play_sound(traps_sound)
             lives.subtract_number()
-            score.subtract_points(5)
+            score.subtract_points(constants.DEATH_COST)
             lives_left = lives.get_text()
             if lives_left < 1:
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")

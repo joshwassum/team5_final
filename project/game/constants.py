@@ -12,6 +12,7 @@ COIN_SCALE = 1
 PLAYER_MOVEMENT_SPEED = 5
 GRAVITY = 1
 PLAYER_JUMP_SPEED = 20
+DEATH_COST = 5
 
 COIN_COLLISION_SOUND = ":resources:sounds/coin1.wav"
 PLAYER_JUMP_SOUND = ":resources:sounds/phasejump1.wav"

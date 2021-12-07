@@ -48,7 +48,7 @@ class HandleDeathCollisionAction(Action):
         if player_location.center_y < -10:
             arcade.play_sound(death_sound)
             lives.subtract_number()
-            score.subtract_points(5)
+            score.subtract_points(constants.DEATH_COST)
             if death_count < 2:
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
             else:
