@@ -2,7 +2,7 @@ import arcade
 from game import constants
 from game.player_sprite_animation import PlayerSpriteAnimation
 
-class VictoryView(arcade.View):
+class LevelAdvanceView(arcade.View):
     """Creates our victory view and sets up the elements on screen. 
 
     Stereotype:
@@ -15,7 +15,7 @@ class VictoryView(arcade.View):
         script (dict): The game actions {key: tag, value: list}.
     """
 
-    def __init__(self, cast, props, script):
+    def __init__(self, scene, cast, props, script):
         """The class constructor
         Args:
             self (VictoryView): An instance of VictoryView.
@@ -26,12 +26,12 @@ class VictoryView(arcade.View):
         """
 
         super().__init__()
-        self.scene = None
+        self.scene = scene
         self.cast = cast
         self.props = props
         self.script = script
-        self.map_name = None
-        self._set_map_name(cast["level"])
+        self.map_level = cast["level"]
+        self._level_advance()
         self._new_scene()
         self._new_props()
 
@@ -53,7 +53,7 @@ class VictoryView(arcade.View):
         arcade.start_render()
         arcade.draw_text("Congratulations", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("CLICK IF YOU DARE PLAY AGAIN!", self.window.width / 2, self.window.height / 2-75,
+        arcade.draw_text("When ready CLICK to start!", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.SEA_GREEN, font_size=20, anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
@@ -68,33 +68,40 @@ class VictoryView(arcade.View):
             _modifiers (??): Any effects effecting the clicking of the mouse.
         """
 
-        self.cast['lives'].set_text(constants.MAX_LIVES)
-        self.cast['score'].set_text(0)
+        self.cast['lives'].set_text(self.cast['lives'].get_text())
+        self.cast['score'].set_text(self.cast['score'].get_text())
         self.cast['crystals'].set_text(0)
-        self.cast['level'].set_text(constants.LEVEL)
+        self.cast['level'].set_text(self.map_level)
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
 
-
-    def _set_map_name(self, level):
-
-        self.map_level = level.get_text()
-        self.map_name = f"project/game/assets/map_{self.map_level}.json"
-
-
-    def _new_scene(self):
-        """Private function that recreates the first level for game restart.
+    def _level_advance(self):
+        """Handles advancing and calling the number for the current level of play
         
         Args:
-            self (VictoryView): An instance of VictoryView.
+            self(level advance View): An instance of LevelAdvanceView
+
+        """
+        #adds one to the current level
+        self.map_level.add_number()
+
+        #set the level variable from the level object
+        self.map_level = self.map_level.get_text()
+        
+    def _new_scene(self):
+        """Private function that recreates the first level for next game level.
+        
+        Args:
+            self (Level advance view): An instance of LevelAdvanceView.
         """
 
         # Initializes arcade Scene object
         self.scene = arcade.Scene()
 
 
+        map_name = f"project/game/assets/map_{self.map_level}.json"
 
         # Saves the tilemap and stores in the Scene object
-        tile_map = arcade.load_tilemap(self.map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)
+        tile_map = arcade.load_tilemap(map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)
         self.scene = arcade.Scene.from_tilemap(tile_map)
 
 

@@ -22,7 +22,6 @@ RIDDLEMASTER_SOUND = ":resources:sounds/upgrade3.wav"
 MAIN_FILE = ":resources:images/animated_characters/female_adventurer/femaleAdventurer"
 
 LEVEL = 1
-MAP_NAME = f"project/game/assets/map_{LEVEL}.json"
 
 RIGHT_FACING = 0
 LEFT_FACING = 1
@@ -36,6 +35,39 @@ LAYER_NAME_PLAYER = "Player"
 LAYER_NAME_CRYSTALS = "Crystals"
 LAYER_NAME_TRAPS = "Traps"
 LAYER_NAME_RIDDLEMASTER = "Riddlemaster"
+
+# Layer Specific Options for the Tilemap
+LAYER_OPTIONS = {
+    LAYER_NAME_PLATFORMS: {
+            "use_spatial_hash": True,
+        },
+    LAYER_NAME_LADDERS: {
+            "use_spatial_hash": True,
+            },
+    LAYER_NAME_COINS: {
+            "use_spatial_hash": True,
+            },
+    LAYER_NAME_PLAYER: {
+            "use_spatial_hash": False,
+            },
+    LAYER_NAME_TRAPS: {
+            "use_spatial_hash": True,
+            },        
+    LAYER_NAME_CRYSTALS: {
+            "use_spatial_hash": True,
+            },
+    LAYER_NAME_BACKGROUND: {
+            "use_spatial_hash": True,
+            },
+    LAYER_NAME_RIDDLEMASTER: {
+            "use_spatial_hash": True,
+            },
+    LAYER_NAME_FOREGROUND: {
+            "use_spatial_hash": True,
+            },
+    }
+
+
 
 RIDDLE_MASTER_SCRIPT = [[{"You've made it to the Riddle Master, click OK": ""}, 
 {"Try to make it through my Riddles by typing the correct answer, click OK": ""},
