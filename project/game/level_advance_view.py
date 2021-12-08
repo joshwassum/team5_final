@@ -3,7 +3,7 @@ from game import constants
 from game.player_sprite_animation import PlayerSpriteAnimation
 
 class LevelAdvanceView(arcade.View):
-    """Creates our victory view and sets up the elements on screen. 
+    """Creates our level advance view and sets up the elements on screen. 
 
     Stereotype:
         View
@@ -18,7 +18,7 @@ class LevelAdvanceView(arcade.View):
     def __init__(self, scene, cast, props, script):
         """The class constructor
         Args:
-            self (VictoryView): An instance of VictoryView.
+            self (LevelAdvanceView): An instance of LevelAdvanceView.
             scene (None): Awaits initialization by the _new_scene function.
             cast (dict): The game actors {key: tag, value: list}.
             props (dict): The game interface objects {key: tag, value: Arcade Object}.
@@ -38,7 +38,7 @@ class LevelAdvanceView(arcade.View):
     def on_show(self):
         """ This is run once when we switch to this view 
         Args:
-            self (VictoryView): An instance of VictoryView.
+            self (LevelAdvanceView): An instance of LevelAdvanceView.
         """
 
         arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
@@ -47,21 +47,21 @@ class LevelAdvanceView(arcade.View):
     def on_draw(self):
         """ Draw this view
         Args:
-            self (VictoryView): An instance of VictoryView.
+            self (LevelAdvanceView): An instance of LevelAdvanceView.
         """
 
         arcade.start_render()
         arcade.draw_text("Congratulations", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("When ready CLICK to start!", self.window.width / 2, self.window.height / 2-75,
-                        arcade.color.SEA_GREEN, font_size=20, anchor_x="center")
+        arcade.draw_text("When ready to move to the next level CLICK to start!", self.window.width / 2, self.window.height / 2-75,
+                        arcade.color.SEA_GREEN, font_size=16, anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         """ If the user presses the mouse button, restart the game.
         Handles the restting of important game logic.
         
         Args:
-            self (game_over_view): An instance of GameOverView.
+            self (LevelAdvanceView): An instance of LevelAdvanceView.
             _x (int): The mouses x coordinate.
             _y (int): The mouses y coordinate.
             _button (??): The mouse button clicked.
@@ -78,7 +78,7 @@ class LevelAdvanceView(arcade.View):
         """Handles advancing and calling the number for the current level of play
         
         Args:
-            self(level advance View): An instance of LevelAdvanceView
+            self(LevelAdvanceView): An instance of LevelAdvanceView
 
         """
         #adds one to the current level
@@ -91,7 +91,7 @@ class LevelAdvanceView(arcade.View):
         """Private function that recreates the first level for next game level.
         
         Args:
-            self (Level advance view): An instance of LevelAdvanceView.
+            self (LevelAdvanceView): An instance of LevelAdvanceView.
         """
 
         # Initializes arcade Scene object
@@ -115,7 +115,7 @@ class LevelAdvanceView(arcade.View):
     def _new_props(self):
         """Generates a new physics engine.
         Args:
-            self(VictoryView): An instance of VictoryView.
+            self(LevelAdvanceView): An instance of LevelAdvanceView.
         """
         
         # Initializing physics engine and storing it in props

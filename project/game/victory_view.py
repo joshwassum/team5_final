@@ -91,12 +91,9 @@ class VictoryView(arcade.View):
         # Initializes arcade Scene object
         self.scene = arcade.Scene()
 
-
-
         # Saves the tilemap and stores in the Scene object
         tile_map = arcade.load_tilemap(self.map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)
         self.scene = arcade.Scene.from_tilemap(tile_map)
-
 
         # Initializes the player sprite and assigns attributes to it. Then stores it in the scene object
         player_sprite = PlayerSpriteAnimation()
