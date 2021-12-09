@@ -42,13 +42,15 @@ class RiddlemasterView(arcade.View):
         self.cast = cast
         self.props = props
         self.script = script
-        self.riddle = ""
-        self.answer = ""
+        self.riddle = []
+        self.answer = []
         self.level = self.cast["level"].get_text()
         self.iter = 0
-        for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():
-            self.riddle = key
-            self.answer = value
+        self.riddle_script = self._set_script()
+        
+        for key,value in self.riddle_script[0].items():
+            self.riddle.append(key)
+            self.answer.append(value)
 
 
         #######################GUI elements#######################
@@ -60,7 +62,7 @@ class RiddlemasterView(arcade.View):
                             y=200,
                             width=200,
                             height=300,
-                            text=self.riddle,
+                            text=self.riddle[self.iter],
                             text_color=(0, 0, 0, 255))
         self.manager.add(
             arcade.gui.UITexturePane(
@@ -108,23 +110,31 @@ class RiddlemasterView(arcade.View):
             event (Event): The triggering arcade gui event.
         """
 
-        if self.iter < len(constants.RIDDLE_MASTER_SCRIPT[self.level - 1]) - 1:
-            if self.answer == self.text.text.upper().strip():
+        if self.iter < len(self.riddle) - 1:
+            if self.answer[self.iter] == self.text.text.upper().strip():
                 self.iter += 1
-                for key,value in constants.RIDDLE_MASTER_SCRIPT[self.level - 1][self.iter].items():
-                    self.riddle = key
-                    self.answer = value
-                self.text_area.text = self.riddle
+                self.text_area.text = self.riddle[self.iter]
                 self.text.text = ""
             elif self.cast["lives"].get_text() > 0:
                 self.cast["lives"].subtract_number()
                 self.text.text = "Try again!"
             if self.cast["lives"].get_text() < 1:
-                self.iter = 0
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
         else:
-            self.iter = 0
             self.script["view"].execute(self.scene, self.cast, self.props, self.script, "level_advance_view")
+
+    def _set_script(self):
+
+        if self.level == 1:
+            return constants.RIDDLE_MASTER_SCRIPT_LEVEL_1
+        elif self.level == 2:
+            return constants.RIDDLE_MASTER_SCRIPT_LEVEL_2
+        elif self.level == 3: 
+            return constants.RIDDLE_MASTER_SCRIPT_LEVEL_3
+        elif self.level == 4: 
+            return constants.RIDDLE_MASTER_SCRIPT_LEVEL_4
+        elif self.level == 5: 
+            return constants.RIDDLE_MASTER_SCRIPT_LEVEL_5
 
 
 

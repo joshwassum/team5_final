@@ -46,7 +46,6 @@ class GameView(arcade.View):
         self.physics_engine = props["physics_engine"]
         self.gui_camera = props["gui_camera"]
         self.end_of_map = 0
-        self.level = 1
 
         # Track the current state of what key/keys is pressed
         self.left_pressed = False

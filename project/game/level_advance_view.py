@@ -30,7 +30,6 @@ class LevelAdvanceView(arcade.View):
         self.cast = cast
         self.props = props
         self.script = script
-        self.map_level = cast["level"]
         self._level_advance()
         self._new_scene()
         self._new_props()
@@ -71,7 +70,6 @@ class LevelAdvanceView(arcade.View):
         self.cast['lives'].set_text(self.cast['lives'].get_text())
         self.cast['score'].set_text(self.cast['score'].get_text())
         self.cast['crystals'].set_text(0)
-        self.cast['level'].set_text(self.map_level)
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
 
     def _level_advance(self):
@@ -82,10 +80,7 @@ class LevelAdvanceView(arcade.View):
 
         """
         #adds one to the current level
-        self.map_level.add_number()
-
-        #set the level variable from the level object
-        self.map_level = self.map_level.get_text()
+        self.cast['level'].add_number()
         
     def _new_scene(self):
         """Private function that recreates the first level for next game level.
@@ -98,7 +93,7 @@ class LevelAdvanceView(arcade.View):
         self.scene = arcade.Scene()
 
 
-        map_name = f"project/game/assets/map_{self.map_level}.json"
+        map_name = f"project/game/assets/map_{self.cast['level'].get_text()}.json"
 
         # Saves the tilemap and stores in the Scene object
         tile_map = arcade.load_tilemap(map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)

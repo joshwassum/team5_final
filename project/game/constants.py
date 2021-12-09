@@ -68,11 +68,10 @@ LAYER_OPTIONS = {
     }
 
 
-RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the next level you must answer my riddle, click OK": ""},
-{"I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nwater\n\nearth": "FIRE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the next level you must answer my riddle, click OK": "",
+"I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nwater\n\nearth": "FIRE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
-{"What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for round two eh? Think you can handle it?, click OK": "", "What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
 
 RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
 {"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"}]

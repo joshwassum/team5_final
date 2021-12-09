@@ -25,7 +25,7 @@ class HandleRiddlemasterCollisionAction(Action):
         riddlemaster_sound = arcade.load_sound(constants.RIDDLEMASTER_SOUND)
         crystal_count = cast["crystals"].get_text()
 
-        if crystal_count == 5:
+        if crystal_count >= 1:
             if arcade.check_for_collision_with_list(scene["Player"][0], scene["Riddlemaster"]):
 
                 arcade.play_sound(riddlemaster_sound)
