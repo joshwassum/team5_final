@@ -6,7 +6,7 @@ TITLE = "The Heroic V"
 START_LOCATION_X = 64
 START_LOCATION_Y = 128
 MAX_LIVES = 5
-CHARACTER_SCALE = 1
+CHARACTER_SCALE = .85
 TILE_SCALE = .5
 COIN_SCALE = 1
 PLAYER_MOVEMENT_SPEED = 5
@@ -68,16 +68,17 @@ LAYER_OPTIONS = {
     }
 
 
+RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the next level you must answer my riddle, click OK": ""},
+{"I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nwater\n\nearth": "FIRE"}]
 
-RIDDLE_MASTER_SCRIPT = [[{"You've made it to the Riddle Master, click OK": ""}, 
-{"Try to make it through my Riddles by typing the correct answer, click OK": ""},
-{"I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nwater\n\nearth": "FIRE"}, 
-{"What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"},  
-{"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"},
-{"What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"},
-{"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}],
-[{"You've come for round two eh? Think you can handle it?, click OK": ""},{"What gets wet while drying?": "TOWEL"}, 
-{"I have branches, but no fruit, trunk or leaves. What am I?": "BANK"},
-{"The more of this there is, the less you see. What is it?": "DARKNESS"},
-{"David’s parents have three sons: Snap, Crackle, and what’s the name of the third son?": "DAVID"},
-{"I’m found in socks, scarves and mittens; and often in the paws of playful kittens. What am I?": "YARN"}]]
+RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
+{"What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
+
+RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
+{"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"}]
+
+RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
+{"What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"}]
+
+RIDDLE_MASTER_SCRIPT_LEVEL_5 = [{"You've made it to the final level, answer me this one last riddle, click OK": ""},
+{"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}]
