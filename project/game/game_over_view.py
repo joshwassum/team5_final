@@ -1,6 +1,7 @@
 import arcade
 from game import constants
 from game.player_sprite_animation import PlayerSpriteAnimation
+from game import actor
 
 class GameOverView(arcade.View):
     """Creates our game over view and sets up the elements on screen. Uses the arcade.View functions built into
@@ -49,10 +50,12 @@ class GameOverView(arcade.View):
         """
 
         arcade.start_render()
-
+# Final Score: {self.cast['score'].get_text()}
         # Draws the test on the screen.
         arcade.draw_text("Game Over", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text(f"Final Score: {self.cast['score'].get_text()}", self.window.width / 2, self.window.height / 2-40,
+                        arcade.color.WHITE, font_size=25, anchor_x="center")
         arcade.draw_text("Click to restart", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.WHITE, font_size=20, anchor_x="center")
 
