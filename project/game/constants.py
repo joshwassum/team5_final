@@ -73,11 +73,11 @@ RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the next level you must
 
 RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for round two eh? Think you can handle it?, click OK": "", "What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
-{"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for round two eh? Think you can handle it?, click OK": "",
+"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"You've come for round two eh? Think you can handle it?, click OK": ""},
-{"What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"You've come for round two eh? Think you can handle it?, click OK": "",
+"What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_5 = [{"You've made it to the final level, answer me this one last riddle, click OK": ""},
-{"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_5 = [{"You've made it to the final level, answer me this one last riddle, click OK": "",
+"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}]

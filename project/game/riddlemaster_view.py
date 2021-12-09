@@ -110,18 +110,21 @@ class RiddlemasterView(arcade.View):
             event (Event): The triggering arcade gui event.
         """
 
-        if self.iter < len(self.riddle) - 1:
+        if self.iter <= len(self.riddle) - 1:
             if self.answer[self.iter] == self.text.text.upper().strip():
                 self.iter += 1
-                self.text_area.text = self.riddle[self.iter]
-                self.text.text = ""
+                if self.iter == len(self.riddle) and self.cast["level"].get_text() < 5:
+                    self.script["view"].execute(self.scene, self.cast, self.props, self.script, "level_advance_view")
+                elif self.iter == len(self.riddle) and self.cast["level"].get_text() == 5:
+                    self.script["view"].execute(self.scene, self.cast, self.props, self.script, "victory")
+                else:
+                    self.text_area.text = self.riddle[self.iter]
+                    self.text.text = ""
             elif self.cast["lives"].get_text() > 0:
                 self.cast["lives"].subtract_number()
                 self.text.text = "Try again!"
             if self.cast["lives"].get_text() < 1:
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
-        else:
-            self.script["view"].execute(self.scene, self.cast, self.props, self.script, "level_advance_view")
 
     def _set_script(self):
 
