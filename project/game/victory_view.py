@@ -30,10 +30,6 @@ class VictoryView(arcade.View):
         self.cast = cast
         self.props = props
         self.script = script
-        self.map_name = None
-        self._set_map_name(cast["level"])
-        self._new_scene()
-        self._new_props()
 
     def on_show(self):
         """ This is run once when we switch to this view 
@@ -74,15 +70,10 @@ class VictoryView(arcade.View):
         self.cast['score'].set_text(0)
         self.cast['crystals'].set_text(0)
         self.cast['level'].set_text(constants.LEVEL)
+        self._new_scene()
+        self._new_props()
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
-
-
-    def _set_map_name(self, level):
-
-        self.map_level = level.get_text()
-        self.map_name = f"project/game/assets/map_{self.map_level}.json"
-
-
+        
     def _new_scene(self):
         """Private function that recreates the first level for game restart.
         
@@ -94,7 +85,8 @@ class VictoryView(arcade.View):
         self.scene = arcade.Scene()
 
         # Saves the tilemap and stores in the Scene object
-        tile_map = arcade.load_tilemap(self.map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)
+        map_name = f"project/game/assets/map_{self.cast['level'].get_text()}.json"
+        tile_map = arcade.load_tilemap(map_name, constants.TILE_SCALE, constants.LAYER_OPTIONS)
         self.scene = arcade.Scene.from_tilemap(tile_map)
 
         # Initializes the player sprite and assigns attributes to it. Then stores it in the scene object
