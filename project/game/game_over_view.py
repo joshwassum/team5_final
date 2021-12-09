@@ -117,7 +117,8 @@ class GameOverView(arcade.View):
         }
 
         # Saves the tilemap and stores in the Scene object
-        tile_map = arcade.load_tilemap(constants.MAP_NAME, constants.TILE_SCALE, layer_options)
+        map_name = f"project/game/assets/map_{constants.LEVEL}.json"
+        tile_map = arcade.load_tilemap(map_name, constants.TILE_SCALE, layer_options)
         self.scene = arcade.Scene.from_tilemap(tile_map)
         self.scene.add_sprite_list_before("Player", constants.LAYER_NAME_FOREGROUND)
 
