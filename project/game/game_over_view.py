@@ -31,8 +31,7 @@ class GameOverView(arcade.View):
         self.props = props
         self.cast = cast
         self.script = script
-        self._new_scene()
-        self._new_props()
+        
 
     def on_show(self):
         """ This is run once when we switch to this view 
@@ -75,6 +74,8 @@ class GameOverView(arcade.View):
         self.cast['score'].set_text(0)
         self.cast['crystals'].set_text(0)
         self.cast['level'].set_text(constants.LEVEL)
+        self._new_scene()
+        self._new_props()
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
         
 
