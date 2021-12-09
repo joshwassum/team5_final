@@ -30,9 +30,7 @@ class LevelAdvanceView(arcade.View):
         self.cast = cast
         self.props = props
         self.script = script
-        self._level_advance()
-        self._new_scene()
-        self._new_props()
+        
 
     def on_show(self):
         """ This is run once when we switch to this view 
@@ -66,22 +64,15 @@ class LevelAdvanceView(arcade.View):
             _button (??): The mouse button clicked.
             _modifiers (??): Any effects effecting the clicking of the mouse.
         """
-
         self.cast['lives'].set_text(self.cast['lives'].get_text())
         self.cast['score'].set_text(self.cast['score'].get_text())
         self.cast['crystals'].set_text(0)
+            #adds one to the current level
+        self.cast['level'].add_number()
+        self._new_scene()
+        self._new_props()
         self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game")
 
-    def _level_advance(self):
-        """Handles advancing and calling the number for the current level of play
-        
-        Args:
-            self(LevelAdvanceView): An instance of LevelAdvanceView
-
-        """
-        #adds one to the current level
-        self.cast['level'].add_number()
-        
     def _new_scene(self):
         """Private function that recreates the first level for next game level.
         
