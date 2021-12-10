@@ -37,7 +37,7 @@ class VictoryView(arcade.View):
             self (VictoryView): An instance of VictoryView.
         """
 
-        arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
+        arcade.set_background_color(arcade.color.BANGLADESH_GREEN)
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_draw(self):
@@ -51,7 +51,7 @@ class VictoryView(arcade.View):
                         arcade.color.WHITE, font_size=50, anchor_x="center")
         arcade.draw_text(f"Final Score: {self.cast['score'].get_text()}", self.window.width / 2, self.window.height / 2-40,
                         arcade.color.WHITE, font_size=25, anchor_x="center")
-        arcade.draw_text("CLICK IF YOU DARE PLAY AGAIN!", self.window.width / 2, self.window.height / 2-75,
+        arcade.draw_text("Click anywhere if you dare to play again!", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.SEA_GREEN, font_size=20, anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
