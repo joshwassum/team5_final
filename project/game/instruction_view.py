@@ -24,7 +24,7 @@ class InstructionView(arcade.View):
         self.manager = arcade.gui.UIManager()
         self.manager.enable()
 
-        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+        arcade.set_background_color(arcade.color.BANGLADESH_GREEN)
         
 
         self.v_box = arcade.gui.UIBoxLayout()
@@ -67,13 +67,15 @@ class InstructionView(arcade.View):
         """
         arcade.start_render()
         self.manager.draw()
-        arcade.draw_text("The Heroic V", self.window.width / 2, self.window.height / 2 + 150,
+        arcade.draw_text("The Heroic V(five)", self.window.width / 2, self.window.height / 2 + 150,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
         arcade.draw_text("Instructions", self.window.width / 2, self.window.height / 2 + 85,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
 
-        arcade.draw_text("Be the hero V and go collect 5 crystals to give to the Riddle Master who will ask a series of riddles to complete the dungeon. ", self.window.width / 2, self.window.height / 2-75,
-                        arcade.color.WHITE, font_size=14, anchor_x="center")
+        arcade.draw_text("Play as the hero V. Take five crystals to the Riddle Master and he will ask a riddle before you can advance to the next dungeon. ", self.window.width / 2, self.window.height / 2-75,
+                        arcade.color.WHITE, font_size=12, anchor_x="center")
 
-        arcade.draw_text("Along the way collect coins to earn points. Let's see what you can do!", self.window.width / 2, self.window.height / 2-125,
-                        arcade.color.WHITE, font_size=14, anchor_x="center")
+        arcade.draw_text("Along the way collect coins to earn points. Bronze is worth one point, silver is worth three points, gold is worth five points, and gems are worth 15 points.", self.window.width / 2, self.window.height / 2-125,
+                        arcade.color.WHITE, font_size=12, anchor_x="center")
+        arcade.draw_text("If you think you have what it takes click start game to begin.", self.window.width / 2, self.window.height / 2-225,
+                        arcade.color.WHITE, font_size=12, anchor_x="center")

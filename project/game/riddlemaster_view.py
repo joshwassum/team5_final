@@ -36,7 +36,7 @@ class RiddlemasterView(arcade.View):
         """
         
         super().__init__()
-        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+        arcade.set_background_color(arcade.color.BANGLADESH_GREEN)
 
         self.scene = scene
         self.cast = cast

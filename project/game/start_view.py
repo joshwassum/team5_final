@@ -36,7 +36,7 @@ class StartView(arcade.View):
         self.manager = arcade.gui.UIManager()
         self.manager.enable()
 
-        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+        arcade.set_background_color(arcade.color.BANGLADESH_GREEN)
 
         self.v_box = arcade.gui.UIBoxLayout()
 

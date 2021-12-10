@@ -38,7 +38,7 @@ class LevelAdvanceView(arcade.View):
             self (LevelAdvanceView): An instance of LevelAdvanceView.
         """
 
-        arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
+        arcade.set_background_color(arcade.color.BANGLADESH_GREEN)
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_draw(self):
@@ -50,7 +50,7 @@ class LevelAdvanceView(arcade.View):
         arcade.start_render()
         arcade.draw_text(f"Level { self.cast['level'].get_text()} Complete!", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("When ready to move to the next level CLICK to start!", self.window.width / 2, self.window.height / 2-75,
+        arcade.draw_text("When ready to move to the next dungeon CLICK to start!", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.SEA_GREEN, font_size=16, anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):

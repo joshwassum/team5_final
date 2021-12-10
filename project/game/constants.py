@@ -68,16 +68,16 @@ LAYER_OPTIONS = {
     }
 
 
-RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the level II you must answer my riddle, click OK": "",
-"I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nwater\n\nearth": "FIRE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to enter the next dungeon you must answer a riddle.\nClick OK": "",
+"I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nelectricity\n\nwind": "FIRE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for level III eh? Think you can handle it?, click OK": "", "What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"Congratulations you compleated dungeon II. Answer my riddle to enter dungeon III.\nClick OK": "", "What has to be broken before you can use it?\n\nglue\n\ntape\n\negg\n\nice": "EGG"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for level IV eh? Think you can handle it?, click OK": "",
-"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"Congratulations you compleated dungeon III. Answer my riddle to enter dungeon IV.\nClick OK": "",
+"I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nsnake": "CANDLE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"You've come for level V eh? Think you can handle it?, click OK": "",
-"What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"Congratulations you compleated dungeon VI. Answer my riddle to enter dungeon V.\nClick OK": "",
+"What is full of holes but still holds water?\n\nbucket\n\nperson\n\ncloud\n\nsponge": "SPONGE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_5 = [{"You've made it to the final level, answer me this one last riddle, click OK": "",
-"What is always in front of you but can’t be seen?\n\nglasses\n\ntraffic\n\nfuture\n\nphone": "FUTURE"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_5 = [{"WOW! You've completed the final level; one last riddle and you win.\nClick OK": "",
+"What is always in front of you but can’t be seen?\n\nglasses\n\nair\n\nfuture\n\nyour nose": "FUTURE"}]
