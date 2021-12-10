@@ -10,8 +10,8 @@ platforms collecting crystals until they have enough to challenge the riddlemast
 coins throughout the levels for points. Bronze coins are worth 1 point, silver 3 points, gold 5 points, and crystals
 15 points. The player will then present their crystals to the riddlemaster who will then ask a question. Once  
 the correct solution is selected the player moves on to the next level. Here's the catch though, the player only 
-has five lives, and each time they answer a question wrong, they lose a life. If you fall in to a trap you lose a 
-life and points off your score. When your life total hits zero, it's game over. 
+has five lives, and each time they answer a question wrong, you lose a life. If you fall in to a trap or fall off the map
+you lose a life and points off your score. When your life total hits zero, it's game over. 
 
 What say you? Do you have what it takes to delve into the dungeon of V?
 
