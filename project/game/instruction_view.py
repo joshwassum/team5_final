@@ -74,8 +74,9 @@ class InstructionView(arcade.View):
 
         arcade.draw_text("Play as the hero V. Take five crystals to the Riddle Master and he will ask a riddle before you can advance to the next dungeon. ", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.WHITE, font_size=12, anchor_x="center")
-
-        arcade.draw_text("Along the way collect coins to earn points. Bronze is worth one point, silver is worth three points, gold is worth five points, and gems are worth 15 points.", self.window.width / 2, self.window.height / 2-125,
+        arcade.draw_text("Controls: Up: 'w' or up arrow key, Down: 's' or down arrow key, Right: 'd' or right arrow key, Left: 'a' or left arrow key.", self.window.width / 2, self.window.height / 2-100,
+                        arcade.color.WHITE, font_size=12, anchor_x="center")
+        arcade.draw_text("Along the way collect coins to earn points. Bronze: 1 point; Silver: 3 points; Gold: 5 points; Gems: 15 points.", self.window.width / 2, self.window.height / 2-125,
                         arcade.color.WHITE, font_size=12, anchor_x="center")
         arcade.draw_text("If you think you have what it takes click start game to begin.", self.window.width / 2, self.window.height / 2-225,
                         arcade.color.WHITE, font_size=12, anchor_x="center")
