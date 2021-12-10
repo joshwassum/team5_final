@@ -68,15 +68,15 @@ LAYER_OPTIONS = {
     }
 
 
-RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the next level you must answer my riddle, click OK": "",
+RIDDLE_MASTER_SCRIPT_LEVEL_1 = [{"In order to advance to the level II you must answer my riddle, click OK": "",
 "I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I? \n\nfire\n\nice\n\nwater\n\nearth": "FIRE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for round two eh? Think you can handle it?, click OK": "", "What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
+RIDDLE_MASTER_SCRIPT_LEVEL_2 = [{"You've come for level III eh? Think you can handle it?, click OK": "", "What has to be broken before you can use it?\n\nballoon\n\nwindow\n\negg\n\nclock": "EGG"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for round two eh? Think you can handle it?, click OK": "",
+RIDDLE_MASTER_SCRIPT_LEVEL_3 = [{"You've come for level IV eh? Think you can handle it?, click OK": "",
 "I’m tall when I’m young, and I’m short when I’m old. What am I?\n\nchild\n\ncandle\n\nbear\n\nbattery": "CANDLE"}]
 
-RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"You've come for round two eh? Think you can handle it?, click OK": "",
+RIDDLE_MASTER_SCRIPT_LEVEL_4 = [{"You've come for level V eh? Think you can handle it?, click OK": "",
 "What is full of holes but still holds water?\n\nbucket\n\nbody\n\nearth\n\nsponge": "SPONGE"}]
 
 RIDDLE_MASTER_SCRIPT_LEVEL_5 = [{"You've made it to the final level, answer me this one last riddle, click OK": "",
