@@ -127,6 +127,11 @@ class RiddlemasterView(arcade.View):
                 self.script["view"].execute(self.scene, self.cast, self.props, self.script, "game_over")
 
     def _set_script(self):
+        """ sets what riddle need for what level you are on.
+
+            Args:
+            self (RiddleMasterView): An instance of RiddleMasterView. 
+        """
 
         if self.level == 1:
             return constants.RIDDLE_MASTER_SCRIPT_LEVEL_1
