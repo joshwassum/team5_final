@@ -47,8 +47,9 @@ def main():
 #########################Scene Objects######################################  
 
     # Initializes arcade Scene object
-    scene = arcade.Scene()
+    # scene = arcade.Scene()
 
+    # Use the current level to get the correct map
     map_level = level.get_text()
     map_name = f"project/game/assets/map_{map_level}.json"
 
@@ -61,6 +62,7 @@ def main():
     player_sprite.center_x = constants.START_LOCATION_X
     player_sprite.center_y = constants.START_LOCATION_Y
     
+    # add the player_sprite object to the scene object. 
     scene.add_sprite(constants.LAYER_NAME_PLAYER, player_sprite)
 
 

@@ -48,7 +48,7 @@ class LevelAdvanceView(arcade.View):
         """
 
         arcade.start_render()
-        arcade.draw_text(f"Level { self.cast['level'].get_text()} Complete!", self.window.width / 2, self.window.height / 2,
+        arcade.draw_text(f"Level {self.cast['level'].get_text()} Complete!", self.window.width / 2, self.window.height / 2,
                         arcade.color.WHITE, font_size=50, anchor_x="center")
         arcade.draw_text("When ready to move to the next dungeon CLICK to start!", self.window.width / 2, self.window.height / 2-75,
                         arcade.color.SEA_GREEN, font_size=16, anchor_x="center")
